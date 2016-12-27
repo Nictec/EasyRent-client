@@ -1,71 +1,30 @@
-<template>
+<template> 
   <div id="app"> 
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">  
-           <ul class="topnav" id="myTopnav"> 
-            <li><router-link to="/">Home</router-link></li> 
-            <li><router-link to="/test">Test</router-link></li> 
-            <li><router-link to="/equipment">Equipment</router-link></li>
-        </ul>
-        <router-view></router-view>
-  </div>
+        <TopNav></TopNav>
+        <MainNav></MainNav> 
+        <router-view class="content"></router-view> 
+    </div>
 </template>
 
 <script>
-import Test from './components/Test.vue'
+import MainNav from './components/MainNav.vue' 
+import TopNav from './components/TopNav.vue'
 
 export default {
   name: 'app',
-  components: {
+  components: { 
+      MainNav, 
+      TopNav
   }
 }
 </script>
 
 
 <style scoped> 
-    
-    ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333; 
-    width: 101.9%; 
-    height: 4em;
-    margin-left: -0.5rem; 
-    margin-right: -15rem;  
-    margin-top: -10px; 
-    margin-bottom: 1em;
-} 
-
-ul.topnav li {float: left;} 
-    
-ul.topnav li a {
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 20px 18px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 17px;
-    font-family: Roboto;
-}
-
-/* Change background color of links on hover */
-ul.topnav li a:hover {background-color: #555;}
-
-/* Hide the list item that contains the link that should open and close the topnav on small screens */
-ul.topnav li.icon {display: none;} 
-
-/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
-@media screen and (max-width:680px) {
-  ul.topnav li:not(:first-child) {display: none;}
-  ul.topnav li.icon {
-    float: right;
-    display: inline-block;
-  }
-} 
- 
-    .router-link{ 
-        background-color: #555;
-    }
+    .content{ 
+        padding-left: 7em; 
+        position: relative; 
+        margin-top: -48em;
+    }  
 </style>
