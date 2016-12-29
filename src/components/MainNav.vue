@@ -1,49 +1,52 @@
 <template> 
-<div class="icon-bar">
-    <router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i></router-link> 
-    <router-link to="/test"><i class="fa fa-font" aria-hidden="true"></i></router-link> 
-    <router-link to="/equipment"><i class="fa fa-signal" aria-hidden="true"></router-link>
-</div>
+<div class="sidenav" id=mySidenay>
+    <router-link to="/">Dashboard</router-link> 
+    <router-link to="/test">Test</router-link> 
+    <router-link to="/equipment">Equipment</router-link>
+</div> 
 </template> 
 
 
 <script> 
     export default { 
         name: 'MainNav', 
-        components: { 
-        
-        }
     }
 </script> 
 
 
 <style scoped> 
-    .icon-bar {
-    height: 100%;
-    width: 90px;
-    text-align: center;
-    background-color: #555;
+  /* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 250px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 30px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
-.icon-bar a {
-    padding: 16px;
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px; 
+    text-decoration: none;
+    font-size: 25px; 
+    font-family: roboto;
+    color: #818181;
     display: block;
-    transition: all 0.3s ease;
-    color: white;
-    font-size: 36px;
+    transition: 0.3s
 }
 
-.icon-bar a:hover {
-    background-color: #000;
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+} 
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
 }
-
-.active {
-    background-color: #4CAF50;
-}  
-
- .icon-bar {
-        margin-left: -1em; 
-        margin-top: -1em; 
-        height: 48em;
-    }
 </style>

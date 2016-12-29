@@ -1,17 +1,25 @@
 <template> 
      <ul class="topnav" id="myTopnav"> 
-            <li><router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i></router-link></li> 
-            <li><router-link to="/test"><i class="fa fa-font" aria-hidden="true"></i></router-link></li> 
-            <li><router-link to="/equipment"><i class="fa fa-signal" aria-hidden="true"></router-link></li>
-        </ul>
+         <li class="heading">EasyRent</li> 
+         <div class="usermenue"> 
+             <li v-on:click="cInfo()"><a>User</a></li>
+         </div> 
+     </ul>
 </template> 
 
 
 <script> 
     export default { 
         name: 'topnav', 
-        components:{ 
-            
+        data () { 
+         return{ 
+           
+         }
+        }, 
+        methods: { 
+            cInfo: function(){ 
+                console.info('this will be the usermenue')
+            }
         }
     }
 </script> 
@@ -34,11 +42,11 @@
 
 ul.topnav li {float: left;} 
     
-ul.topnav li a {
+ul.topnav li{
     display: inline-block;
     color: #f2f2f2;
     text-align: center;
-    padding: 20px 18px;
+    padding: 20px 18px; 
     text-decoration: none;
     transition: 0.3s;
     font-size: 17px;
@@ -63,4 +71,12 @@ ul.topnav li.icon {display: none;}
     .router-link{ 
         background-color: #555;
     } 
+    .heading{ 
+        font-size: 30px;
+    } 
+    
+    .usermenue{ 
+        float:right; 
+        padding-right: 1em;
+    }
 </style>

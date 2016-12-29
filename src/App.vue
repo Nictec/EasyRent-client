@@ -2,7 +2,7 @@
   <div id="app"> 
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">  
         <TopNav></TopNav>
-        <MainNav></MainNav> 
+        <MainNav class="nav"></MainNav> 
         <router-view class="content"></router-view> 
     </div>
 </template>
@@ -23,8 +23,12 @@ export default {
 
 <style scoped> 
     .content{ 
-        padding-left: 7em; 
+        padding-left: 17em; 
         position: relative; 
-        margin-top: -48em;
-    }  
+        margin-top: 0em;
+    } 
+    
+    .nav{ 
+     margin-top: 3.8em;
+    }
 </style>
