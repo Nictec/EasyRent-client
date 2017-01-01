@@ -25,10 +25,11 @@ export default {
     .content{ 
         padding-left: 17em; 
         position: relative; 
-        margin-top: 0em;
+        margin-top: 0em;  
+        padding-top: 3em;
     } 
     
     .nav{ 
-     margin-top: 3.8em;
+     margin-top: 4em;
     }
 </style>

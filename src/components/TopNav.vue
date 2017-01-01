@@ -36,8 +36,10 @@
     height: 4em;
     margin-left: -0.5rem; 
     margin-right: -15rem;  
-    margin-top: -10px; 
-    margin-bottom: 1em;
+    margin-top: -8px; 
+    margin-bottom: 1em; 
+    z-index: 1; 
+    position: fixed; 
 } 
 
 ul.topnav li {float: left;} 
@@ -72,11 +74,12 @@ ul.topnav li.icon {display: none;}
         background-color: #555;
     } 
     .heading{ 
-        font-size: 30px;
+        font-size: 30px; 
+        font-family: roboto;
     } 
     
     .usermenue{ 
         float:right; 
-        padding-right: 1em;
+        padding-right: 2em;
     }
 </style>

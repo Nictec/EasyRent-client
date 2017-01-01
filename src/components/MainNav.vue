@@ -18,23 +18,27 @@
   /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
-    width: 250px; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    width: 250px;
+    position: fixed;  
+    z-index: 1; 
     top: 0;
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #ffffff; /* Black*/ 
+    border: solid; 
+    border-width: 1.5px; 
+    border-top: none;
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 30px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    padding-top: 25px; /* Place content 25px from the top */
 }
 
 /* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 8px 32px; 
     text-decoration: none;
-    font-size: 25px; 
-    font-family: roboto;
+    font-size: 18px; 
+    font-family: roboto; 
+    border-bottom: solid; 
+    border-width: 1.5px; 
     color: #818181;
     display: block;
     transition: 0.3s
