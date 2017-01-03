@@ -1,6 +1,6 @@
 <template> 
 <div class="sidenav" id=mySidenay>
-    <router-link to="/">Dashboard</router-link> 
+    <router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</router-link> 
     <router-link to="/test">Test</router-link> 
     <router-link to="/equipment">Equipment</router-link>
 </div> 
