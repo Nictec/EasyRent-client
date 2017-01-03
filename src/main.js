@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 
 const router = new VueRouter({  
-      mode: 'history',
+      mode: 'hash',
     routes: [ 
         {path:'/', component: Dashboard}, 
         {path: '/test', component: Test}, 

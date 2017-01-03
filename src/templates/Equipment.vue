@@ -4,9 +4,8 @@
   <transition name="fade"> 
     <div v-show="alert_open" class="alert" ><h3>{{ alert }}</h3><span @click="alert_open=false"><a>&times;</a></span> </div>
   </transition> 
-    <i  v-show="loading" class="fa fa-spinner fa-spin"></i> 
-    <h1>{{ msg }}</h1> 
-<router-link to="/neweq" class="btn-blue" id="add">Equipment hinufügen</router-link>
+    <i  v-show="loading" class="fa fa-spinner fa-spin"></i>  
+<router-link to="/neweq" class="btn-blue pull-right top-space">Equipment hinzufügen</router-link>
 <table> 
     <tr> 
         <th id="top">Name</th> 
@@ -139,5 +138,9 @@ export default {
     #add{ 
         float:right; 
         margin-bottom: 8px;
+    } 
+    
+    .heading{ 
+        font-family: roboto;
     }
 </style>
