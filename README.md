@@ -1,6 +1,6 @@
 # easyrent-client
 
-> Client of the EasyRent Project
+> Client of the EasyRent Project (currently in heavy development)
 
 ## Build Setup
 
@@ -21,4 +21,6 @@ npm run lint
 npm test
 ```
 
-For more information see the [docs for vueify](https://github.com/vuejs/vueify).
+For more install information see the [docs for vueify](https://github.com/vuejs/vueify).
+
+For information about the server and the api visit (https://github.com/nictec/EasyRent-server).
