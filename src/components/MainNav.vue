@@ -1,8 +1,11 @@
 <template> 
 <div class="sidenav" id=mySidenay>
     <router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</router-link> 
-    <router-link to="/test">Test</router-link> 
-    <router-link to="/equipment">Equipment</router-link>
+<!--    <router-link to="/test">Test</router-link> -->
+    <router-link to="/equipment"><i class="fa fa-server" aria-hidden="true"></i>
+Equipment</router-link> 
+<router-link to="/orders"><i class="fa fa-cubes" aria-hidden="true"></i>
+Aufträge</router-link>
 </div> 
 </template> 
 

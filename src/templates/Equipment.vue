@@ -80,7 +80,7 @@ export default {
        del: function(){ 
            var id = this.item; 
            var name = this.name;
-           this.$http.delete("http://localhost:8000/api/equipment/"+id).then(function(){this.$http.get("http://localhost:8000/api/equipments") 
+           this.$http.delete("equipment/"+id).then(function(){this.$http.get("equipments") 
        .then( 
         function(response){
              this.equipment = response.data; 
@@ -96,7 +96,7 @@ export default {
        }
    }, 
    created: function(){ 
-    this.$http.get("http://localhost:8000/api/equipments") 
+    this.$http.get("equipments/all") 
        .then( 
         function(response){
              this.equipment = response.data; 
@@ -108,7 +108,7 @@ export default {
 </script>
 <style lang="less"> 
 @import "../font-awesome-4.7.0/less/font-awesome.less";
-@import "../external_css/tabel.less"; 
+@import "../external_css/tables.less"; 
 @import "../external_css/modals.less"; 
 @import "../external_css/buttons.less";
 

@@ -16,12 +16,15 @@ export default {
   components: { 
       MainNav, 
       TopNav
-  }
+  }, 
+ beforeCreate: function(){ 
+    console.log("before")
+ }
 }
 </script>
 
 
-<style scoped> 
+<style> 
     .content{ 
         padding-left: 17em; 
         position: relative; 
