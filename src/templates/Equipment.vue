@@ -2,10 +2,10 @@
 
 <div class="equipment"> 
   <transition name="fade"> 
-    <div v-show="alert_open" class="alert" ><h3>{{ alert }}</h3><span @click="alert_open=false"><a>&times;</a></span> </div>
-  </transition> 
-    <i  v-show="loading" class="fa fa-spinner fa-spin"></i>  
-<router-link to="/neweq" class="btn-blue pull-right top-space">Equipment hinzufügen</router-link>
+      <div v-show="alert_open" class="alert" ><span @click="alert_open=false">&times;</span> <h3>{{ alert }}</h3></div>
+  </transition>  
+<router-link to="/neweq" class="btn-blue pull-right top-space" id="button" v-bind:title="newInfo">Equipment hinzufügen</router-link>
+<!--
 <table> 
     <tr> 
         <th id="top">Name</th> 
@@ -25,6 +25,54 @@
         </a></th>
     </tr>
 </table> 
+--> 
+
+<div class="container-fluid" style="margin-top: 10px" v-show="!loading"> 
+    
+    <div class="table-row header"> 
+        <div class="wrapper text-4">
+            <div class="wrapper text-2"> 
+                <div class="text">Hersteller</div>
+                <div class="text">Name</div>
+            </div> 
+            <div class="wrapper text-2"> 
+                <div class="text">Gesamtanzahl</div>
+                <div class="text">vorhandene Anzahl</div>
+            </div> 
+            <div class="wrapper text"> 
+                <div class="text">Optionen</div> 
+            </div>
+        </div>
+    </div> 
+    
+    <div class="table-row" v-for="equipment in equipment"> 
+       <div class="wrapper text-4">
+           <div class="wrapper text-2"> 
+               <div class="text">{{equipment.fabricator}}</div>
+               <div class="text">{{equipment.name}}</div>
+           </div> 
+           <div class="wrapper text-2">
+               <div class="text">{{equipment.max_quantity}}</div>
+               <div class="text">5</div>
+           </div> 
+           <div class="wrapper text" id="options"> 
+               <div class="text"> 
+                   <a class="btn-red" id="delete" v-on:click="opm(equipment.id, equipment)" v-bind:title="dinfo">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                   </a> 
+                   <span class="btn-blue">
+                       <i class="fa fa-pencil-square-o" aria-hidden="true" v-bind:title="einfo"></i>
+                    </span>   
+               </div>  
+           </div>
+       </div> 
+    </div>
+    
+</div>
+
+<i  v-show="loading" class="fa fa-circle-o-notch fa-spin spinner"></i> 
+<p class="spinner txt" v-show="loading">lade daten...</p> 
+
 <div id="WarningModal" class="modal" v-if="delete_modal_open">
     
     <div class="modal-content"> 
@@ -51,7 +99,7 @@ export default {
     return { 
      msg:"Equipment", 
      equipment:[], 
-     loading: false, 
+     loading: true, 
      delete_modal_open: false, 
      add_modal_open: false,
      item:"", 
@@ -61,7 +109,10 @@ export default {
      modal_head:"", 
      modal_content:"", 
      modal_text:"", 
-     modal_options:"",
+     modal_options:"", 
+     dinfo: "Equipment löschen", 
+     einfo:"Equipment bearbeiten", 
+     newInfo:"Neues Equipment erstellen",
     }
    }, 
    ready: function(){ 
@@ -110,37 +161,36 @@ export default {
 @import "../font-awesome-4.7.0/less/font-awesome.less";
 @import "../external_css/tables.less"; 
 @import "../external_css/modals.less"; 
-@import "../external_css/buttons.less";
+@import "../external_css/buttons.less"; 
+@import "../external_css/alerts.less";
 
-    .alert{ 
-      background-color: greenyellow; 
-      width: 70em; 
-      height: 3em; 
-      margin-top: 1em; 
-      border-radius: 10px;
-    } 
-    
-    .alert span{ 
-     font-weight: bold; 
-     float:right; 
-     font-size: 25px; 
-     margin-top:-39px; 
-     padding-right: 10px; 
-     position:relative;
-    } 
-    
-    .alert h3{ 
-        text-align: center; 
-        padding-top: 10px; 
-        font-family: roboto;
-    } 
-    
-    #add{ 
+ #add{ 
         float:right; 
         margin-bottom: 8px;
     } 
     
     .heading{ 
+        font-family: roboto;
+    } 
+    
+    #button{ 
+        margin-right: 10em !important; 
+    }
+    
+    #delete{ 
+        margin-right: 0px !important;
+    }
+    
+    .spinner{ 
+        margin-left: 40%; 
+        margin-top: 200px;
+        font-size: 70px;
+    }
+    
+    .txt{ 
+        font-size: 20px !important; 
+        margin-top: 3px; 
+        margin-left: 39.3% !important;
         font-family: roboto;
     }
 </style>

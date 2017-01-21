@@ -3,7 +3,7 @@
     <router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</router-link> 
 <!--    <router-link to="/test">Test</router-link> -->
     <router-link to="/equipment"><i class="fa fa-server" aria-hidden="true"></i>
-Equipment</router-link> 
+Logistik</router-link> 
 <router-link to="/orders"><i class="fa fa-cubes" aria-hidden="true"></i>
 Aufträge</router-link>
 </div> 
@@ -20,8 +20,8 @@ Aufträge</router-link>
 <style scoped> 
   /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 250px;
+    height: 110%; /* 100% Full-height */
+    width: 13em;
     position: fixed;  
     z-index: 1; 
     top: 0;
@@ -31,7 +31,7 @@ Aufträge</router-link>
     border-width: 1.5px; 
     border-top: none;
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 25px; /* Place content 25px from the top */
+    padding-top: 25px; /* Place content 25px from the top */ 
 }
 
 /* The navigation menu links */
@@ -56,4 +56,8 @@ Aufträge</router-link>
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+    
+    @media screen and (max-width: 1356px) { 
+        .sidenav {width: 9em;}
+    }
 </style>

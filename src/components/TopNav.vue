@@ -1,10 +1,19 @@
 <template> 
+    <div> 
      <ul class="topnav" id="myTopnav"> 
          <li class="heading">EasyRent</li> 
          <div class="usermenue"> 
-             <li v-on:click="cInfo()"><a>User</a></li>
+             <li>
+                <i class="fa fa-bell" aria-hidden="true"></i>
+ 
+             </li> 
+             <li v-on:click="cInfo()"><a>
+             <i class="fa fa-user" aria-hidden="true"></i> 
+             <i class="fa fa-caret-down" aria-hidden="true"></i> 
+</a></li>
          </div> 
-     </ul>
+     </ul> 
+    </div>
 </template> 
 
 
@@ -13,19 +22,19 @@
         name: 'topnav', 
         data () { 
          return{ 
-           
+           user_dropdown:false,
          }
         }, 
         methods: { 
             cInfo: function(){ 
-                console.info('this will be the usermenue')
+                this.user_dropdown=true;
             }
         }
     }
 </script> 
 
 
-<style scoped> 
+<style scoped lang=less> 
      ul.topnav {
     list-style-type: none;
     margin: 0;
@@ -49,9 +58,10 @@ ul.topnav li{
     color: #f2f2f2;
     text-align: center;
     padding: 20px 18px; 
-    text-decoration: none;
+    text-decoration: none; 
+    margin-top: 8px;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 19px;
     font-family: Roboto;
 }
 
@@ -81,5 +91,9 @@ ul.topnav li.icon {display: none;}
     .usermenue{ 
         float:right; 
         padding-right: 2em;
-    }
+    } 
+    
+    .usermenue:hover{ 
+        color: #d6d6d6;
+    } 
 </style>
