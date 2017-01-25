@@ -1,10 +1,8 @@
 <template> 
 
-<div class="equipment"> 
-  <transition name="fade"> 
-      <div v-show="alert_open" class="alert" ><span @click="alert_open=false">&times;</span> <h3>{{ alert }}</h3></div>
-  </transition>  
-<router-link to="/neweq" class="btn-blue pull-right top-space" id="button" v-bind:title="newInfo">Equipment hinzufügen</router-link>
+<div class="equipment">  
+      <div v-show="alert_open" class="alert" ><span @click="alert_open=false">&times;</span> <h3>{{ alert }}</h3></div> 
+<router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment hinzufügen</router-link>
 <!--
 <table> 
     <tr> 
@@ -27,11 +25,11 @@
 </table> 
 --> 
 
-<div class="container-fluid" style="margin-top: 10px" v-show="!loading"> 
+<div class="container-fluid main" style="margin-top: 10px" v-show="!loading"> 
     
     <div class="table-row header"> 
         <div class="wrapper text-4">
-            <div class="wrapper text-2"> 
+            <div class="wrapper text-2">  
                 <div class="text">Hersteller</div>
                 <div class="text">Name</div>
             </div> 
@@ -39,14 +37,14 @@
                 <div class="text">Gesamtanzahl</div>
                 <div class="text">vorhandene Anzahl</div>
             </div> 
-            <div class="wrapper text"> 
+            <div class="wrapper text" id="options"> 
                 <div class="text">Optionen</div> 
             </div>
         </div>
     </div> 
     
     <div class="table-row" v-for="equipment in equipment"> 
-       <div class="wrapper text-4">
+       <div class="wrapper text-4"> 
            <div class="wrapper text-2"> 
                <div class="text">{{equipment.fabricator}}</div>
                <div class="text">{{equipment.name}}</div>
@@ -71,7 +69,7 @@
 </div>
 
 <i  v-show="loading" class="fa fa-circle-o-notch fa-spin spinner"></i> 
-<p class="spinner txt" v-show="loading">lade daten...</p> 
+<p class="spinner txt" v-show="loading">lade Daten...</p> 
 
 <div id="WarningModal" class="modal" v-if="delete_modal_open">
     
@@ -138,7 +136,7 @@ export default {
             this.loading = false;
         });})
            console.log("sucsessful deleted"); 
-           this.alert = "Item Gelöscht";
+           this.alert = "Drumm Gelöscht";
            this.alert_open = true;
            this.delete_modal_open = false;
        }, 
@@ -174,7 +172,7 @@ export default {
     } 
     
     #button{ 
-        margin-right: 10em !important; 
+        margin-right: 3.5em !important; 
     }
     
     #delete{ 
@@ -192,5 +190,10 @@ export default {
         margin-top: 3px; 
         margin-left: 39.3% !important;
         font-family: roboto;
+    } 
+    
+    #options{ 
+        padding-left: 30px;
     }
+    
 </style>

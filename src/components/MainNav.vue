@@ -17,7 +17,8 @@ Aufträge</router-link>
 </script> 
 
 
-<style scoped> 
+<style lang="less" scoped> 
+    @color: #333333;
   /* The side navigation menu */
 .sidenav {
     height: 110%; /* 100% Full-height */
@@ -25,10 +26,13 @@ Aufträge</router-link>
     position: fixed;  
     z-index: 1; 
     top: 0;
-    left: 0;
-    background-color: #ffffff; /* Black*/ 
+    left: 0; 
+    margin-left: -10px; 
+    background-color: @color; /* Black*/ 
     border: solid; 
+    border-right: none;
     border-width: 1.5px; 
+    border-color: white;
     border-top: none;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 25px; /* Place content 25px from the top */ 

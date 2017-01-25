@@ -25,6 +25,10 @@ export default {
 
 
 <style> 
+    body{ 
+      background-color: #524f4f; 
+      color: white;
+    }
     .content{ 
         padding-left: 17em; 
         position: relative; 
