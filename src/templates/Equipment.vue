@@ -1,7 +1,6 @@
 <template> 
 
 <div class="equipment">  
-      <div v-show="alert_open" class="alert" ><span @click="alert_open=false">&times;</span> <h3>{{ alert }}</h3></div> 
 <router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment hinzufügen</router-link>
 <!--
 <table> 
@@ -86,7 +85,7 @@
 </div>
   
 </div> 
-
+    <div v-show="alert_open" class="alert" ><span @click="alert_open=false">&times;</span> <h3>{{ alert }}</h3></div> 
 </div>
 </template>
 
@@ -136,9 +135,10 @@ export default {
             this.loading = false;
         });})
            console.log("sucsessful deleted"); 
-           this.alert = "Drumm Gelöscht";
-           this.alert_open = true;
+           this.alert = "Item Gelöscht";
            this.delete_modal_open = false;
+           this.alert_open = true;
+           
        }, 
        
        newEq: function(){ 
@@ -162,7 +162,11 @@ export default {
 @import "../external_css/buttons.less"; 
 @import "../external_css/alerts.less";
 
- #add{ 
+body{ 
+    overflow: visible !important; 
+    overflow-x: hidden;
+} 
+#add{ 
         float:right; 
         margin-bottom: 8px;
     } 

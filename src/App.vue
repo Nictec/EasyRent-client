@@ -27,7 +27,9 @@ export default {
 <style> 
     body{ 
       background-color: #524f4f; 
-      color: white;
+      color: white; 
+      font-family: roboto; 
+/*      overflow: hidden; */
     }
     .content{ 
         padding-left: 17em; 

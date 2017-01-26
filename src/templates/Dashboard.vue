@@ -1,6 +1,8 @@
 <template> 
-   <div class="app">
-    <h1>Das ist das Dashboard</h1> 
+   <div class="dashboard-content">
+    <div class="thumbnail-wrapper"> 
+        <div class="thumbnail"><div>Aufträge heute:</div></div>
+    </div>
    </div>
 </template> 
 
@@ -8,10 +10,28 @@
 <script> 
     export default { 
         name: 'dashboard', 
-    }
+        data() {
+        return{ 
+          orders_today:"",      
+        }}, 
+        }
 </script> 
 
 
-<style scoped> 
-    
+<style lang="less" scoped> 
+    .thumbnail{ 
+        background-color: orange; 
+        margin-top: 3em; 
+        width: 12em; 
+/*        border: solid;*/
+        padding-top: 0.9em; 
+        padding-bottom: 3em; 
+        border-radius: 7px;
+        div{ 
+            padding-left: 10px; 
+            border-bottom: solid white; 
+            padding-bottom: 0.4em;
+            width:14.4rem; 
+          }
+        }
 </style>
