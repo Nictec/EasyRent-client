@@ -1,7 +1,7 @@
 <template> 
 
 <div class="equipment">  
-<router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment hinzufügen</router-link>
+<router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment registrieren</router-link>
 <!--
 <table> 
     <tr> 
