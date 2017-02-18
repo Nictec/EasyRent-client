@@ -57,7 +57,7 @@
                    <a class="btn-red" id="delete" v-on:click="opm(equipment.id, equipment)" v-bind:title="dinfo">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                    </a> 
-                   <span class="btn-blue">
+                   <span class="btn-blue" @click="$router.push('/equipment/'+ equipment.id)">
                        <i class="fa fa-pencil-square-o" aria-hidden="true" v-bind:title="einfo"></i>
                     </span>   
                </div>  

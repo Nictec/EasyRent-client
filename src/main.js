@@ -3,6 +3,7 @@ import _ from 'underscore'
 import Hello from './templates/Hello.vue' 
 import Test from './templates/Test.vue' 
 import Equipment from './templates/Equipment.vue' 
+import EquipmentEdit from './templates/EquipmentEdit.vue' 
 import Dashboard from './templates/Dashboard.vue' 
 import NewEq from './templates/NewEq.vue' 
 import Orders from './templates/Orders.vue' 
@@ -21,6 +22,7 @@ const router = new VueRouter({
         {path:'/', component: Dashboard}, 
         {path: '/test', component: Test}, 
         {path: '/equipment', component: Equipment}, 
+        {path: '/equipment/:equipment_id', component: EquipmentEdit}, 
         {path: '/neweq', component: NewEq}, 
         {path: '/orders', component: Orders}, 
         {path: '/order-details/:event', component: OrderDetails, props:true }, 
