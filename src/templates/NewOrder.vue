@@ -161,16 +161,7 @@
             this.$http.post('orders/all', formData, {emulateJSON: true}).then(function(response){
                 this.errors = []; 
                 console.log("submit successfull"); 
-                this.name = "";
-                this.Type = "";
-                this.city = "";
-                this.street = "";
-                this.dateStart = "";
-                this.dateEnd = "";
-                this.GuestNumber = "";
-                this.status = "";
-                this.client = "";
-                this.description = "";
+                this.$router.push("/choose-eq/"+response.data.id);
             },function(response){
                 this.errors=response.data; 
                 console.log(this.errors);

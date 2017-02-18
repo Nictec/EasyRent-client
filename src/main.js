@@ -8,7 +8,8 @@ import Dashboard from './templates/Dashboard.vue'
 import NewEq from './templates/NewEq.vue' 
 import Orders from './templates/Orders.vue' 
 import OrderDetails from './templates/OrderDetails.vue' 
-import NewOrder from './templates/NewOrder.vue'
+import NewOrder from './templates/NewOrder.vue' 
+import chooseeq from './templates/chooseeq.vue'
 import App from './App.vue'
 import VueRouter from 'vue-router' 
 import VueResource from 'vue-resource'
@@ -26,7 +27,8 @@ const router = new VueRouter({
         {path: '/neweq', component: NewEq}, 
         {path: '/orders', component: Orders}, 
         {path: '/order-details/:event', component: OrderDetails, props:true }, 
-        {path: '/new-order', component: NewOrder}
+        {path: '/new-order', component: NewOrder}, 
+        {path: '/choose-eq/:order_id', component: chooseeq},
     ]
 });
 
