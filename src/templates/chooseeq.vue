@@ -1,7 +1,16 @@
 
 <template> 
   <div class="equipment">  
-   <button @click="alert">aaa</button>
+   <table> 
+       <tr> 
+           <th>Name</th> 
+           <th>Hersteller</th>
+       </tr> 
+       <tr v-for="equipment in equipment"> 
+           <th>{{equipment.name}}</th> 
+           <th>{{equipment.fabricator}}</th>
+       </tr>
+   </table>
   </div>
 </template>
 
@@ -10,6 +19,7 @@ export default {
   name: 'chooseeq',
   data () {
     return { 
+        equipment:"",
     }
    }, 
   methods: { 
@@ -21,7 +31,15 @@ export default {
     orderId(){
       return this.$route.params.order_id
     }
-  },
+  }, 
+    
+  created: function(){ 
+    this.$http.get("equipments/all") 
+       .then( 
+        function(response){
+             this.equipment = response.data; 
+        });
+   }
 }
 </script>
 <style lang="less"> 
