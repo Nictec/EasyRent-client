@@ -4,8 +4,7 @@
    <table> 
        <tr> 
            <th>Name</th> 
-           <th>Hersteller</th> 
-           <th>Options</th>
+           <th>Hersteller</th>
        </tr> 
        <tr v-for="equipment in equipment"> 
            <th>{{equipment.name}}</th> 
