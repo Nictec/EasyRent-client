@@ -96,7 +96,7 @@
             formData.append('shelf', this.shelf); 
             formData.append('beschreibung', this.description); 
 //            formData.append('Image', this.Image);
-            this.$http.post('equipments/all', formData,{emulateJSON: true}).then(function(response){ 
+            this.$http.post('equipment', formData,{emulateJSON: true}).then(function(response){ 
             this.errors = [];
             console.log("submit successfull"); 
             this.name=""; 
@@ -125,7 +125,7 @@
             formData.append('status', this.status); 
             formData.append('shelf', this.shelf); 
             formData.append('beschreibung', this.description);
-            this.$http.post('equipments/all', formData,{emulateJSON: true}).then(function(){ 
+            this.$http.post('equipment', formData,{emulateJSON: true}).then(function(){ 
 //                console.log("submit successfull"); 
             this.$router.push('/equipment');
             }, function(response){
@@ -146,7 +146,7 @@
         }
     },
     created: function(){ 
-        this.$http.get("shelfs/all").then(function(response){
+        this.$http.get("shelf").then(function(response){
          this.shelf = response.data;                                       })
     }
 }

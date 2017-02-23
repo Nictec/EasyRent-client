@@ -8,7 +8,8 @@
        </tr> 
        <tr v-for="equipment in equipment"> 
            <th>{{equipment.name}}</th> 
-           <th>{{equipment.fabricator}}</th>
+           <th>{{equipment.fabricator}}</th> 
+           <th><span class="btn-blue">auswählen</span></th>
        </tr>
    </table>
   </div>
@@ -23,8 +24,8 @@ export default {
     }
    }, 
   methods: { 
-    alert: function(){ 
-      alert(this.orderId);  
+    choose: function(id){ 
+       this.$http.post('') 
     },
   },
   computed: {

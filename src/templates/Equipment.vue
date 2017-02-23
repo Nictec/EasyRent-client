@@ -145,7 +145,7 @@ export default {
        }
    }, 
    created: function(){ 
-    this.$http.get("equipments/all") 
+    this.$http.get("equipment") 
        .then( 
         function(response){
              this.equipment = response.data; 

@@ -71,7 +71,7 @@
                 }
             },  
         created: function(){ 
-            this.$http.get("orders/all").then(function(response){ 
+            this.$http.get("order").then(function(response){ 
                 this.orders = response.data; 
             })
         }, 
