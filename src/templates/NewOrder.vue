@@ -158,7 +158,7 @@
             formData.append('status', this.status);
             formData.append('client', this.client); 
             formData.append('description', this.description); 
-            this.$http.post('orders/all', formData, {emulateJSON: true}).then(function(response){
+            this.$http.post('order/', formData, {emulateJSON: true}).then(function(response){
                 this.errors = []; 
                 console.log("submit successfull"); 
                 this.$router.push("/choose-eq/"+response.data.id);
@@ -177,7 +177,7 @@
             }
         }, 
         created:function(){ 
-            this.$http.get("client").then(function(response){
+            this.$http.get("client/").then(function(response){
                 this.clientlist = response.data;
             })
         }

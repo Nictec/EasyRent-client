@@ -37,11 +37,7 @@
        <span v-if="errors.name" class="error">
            <br>
            {{errorMessage}}
-       </span>  
-     <br> 
-     <label for="pic">Bild</label> 
-     <br> 
-     <input type="file" name="pic" ref=image>   
+       </span>   
      <br> 
      <label for="max_quantity">Bestand</label> 
      <br>
@@ -83,10 +79,7 @@
     }, 
     methods: { 
         save: function(){
-            var files = this.$refs.image.files; 
-            this.tester = files;
-            var formData = new FormData(); 
-            formData.append('Image', files[0]);
+            var formData = new FormData();
             formData.append('name', this.name); 
             formData.append('fabricator', this.fabricator); 
             formData.append('storeplace', this.storeplace); 
@@ -96,7 +89,7 @@
             formData.append('shelf', this.shelf); 
             formData.append('beschreibung', this.description); 
 //            formData.append('Image', this.Image);
-            this.$http.post('equipment', formData,{emulateJSON: true}).then(function(response){ 
+            this.$http.post('equipment/', formData,{emulateJSON: true}).then(function(response){ 
             this.errors = [];
             console.log("submit successfull"); 
             this.name=""; 
@@ -125,7 +118,7 @@
             formData.append('status', this.status); 
             formData.append('shelf', this.shelf); 
             formData.append('beschreibung', this.description);
-            this.$http.post('equipment', formData,{emulateJSON: true}).then(function(){ 
+            this.$http.post('equipment/', formData,{emulateJSON: true}).then(function(){ 
 //                console.log("submit successfull"); 
             this.$router.push('/equipment');
             }, function(response){
@@ -146,7 +139,7 @@
         }
     },
     created: function(){ 
-        this.$http.get("shelf").then(function(response){
+        this.$http.get("shelf/").then(function(response){
          this.shelf = response.data;                                       })
     }
 }

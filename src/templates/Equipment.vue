@@ -58,7 +58,7 @@
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                    </a> 
                    <span class="btn-blue" @click="$router.push('/equipment/'+ equipment.id)">
-                       <i class="fa fa-pencil-square-o" aria-hidden="true" v-bind:title="einfo"></i>
+                       <i class="fa fa-info" aria-hidden="true"></i>
                     </span>   
                </div>  
            </div>
@@ -128,7 +128,7 @@ export default {
        del: function(){ 
            var id = this.item; 
            var name = this.name;
-           this.$http.delete("equipment/"+id).then(function(){this.$http.get("equipments") 
+           this.$http.delete("equipment/"+id+"/").then(function(){this.$http.get("equipment/") 
        .then( 
         function(response){
              this.equipment = response.data; 
@@ -145,7 +145,7 @@ export default {
        }
    }, 
    created: function(){ 
-    this.$http.get("equipment") 
+    this.$http.get("equipment/") 
        .then( 
         function(response){
              this.equipment = response.data; 
