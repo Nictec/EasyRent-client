@@ -22,8 +22,10 @@
     "vue": "vue/dist/vue.common.js"
   },
   "dependencies": {
+    "moment": "^2.17.1",
     "underscore": "^1.8.3",
     "vue": "^2.0.1",
+    "vue-google-maps": "^0.1.21",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.1"
   },

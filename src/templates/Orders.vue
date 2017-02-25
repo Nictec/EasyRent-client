@@ -33,12 +33,12 @@
             <div class="table-row" v-for="orders in orders">
                 <div class="wrapper text-4">
                     <div class="wrapper text-4">
-                        <div class="text">{{orders.name}}</div> 
+                        <div class="text" @click="$router.push('/details/'+ orders.id)" id="details" v-bind:title="Details">{{orders.name}}</div> 
                         <div class="text" style="margin-top:-20px;" id="options"><status :orders="orders"></status></div> 
                     </div> 
                     
                     <div class="wrapper text" id="options"> 
-                        <div class="text" v-bind:title="linfo"><span class="btn-blue"><i class="fa fa-list" aria-hidden="true"></i></span></div>  
+                        <div class="text" v-bind:title="linfo"><span class="btn-blue" @click="$router.push('/equipment-list/'+ orders.id)"><i class="fa fa-list" aria-hidden="true"></i></span></div>  
                     </div>
                 </div>
             </div>
@@ -56,7 +56,8 @@
             return{ 
                 orders:[], 
                 order: "", 
-                linfo:"Benötigtes Equipment anzeigen",
+                linfo:"Benötigtes Equipment anzeigen", 
+                Details:"Details anzeigen",
             }
         }, 
         components:{ 
@@ -68,10 +69,13 @@
                 Object.keys(data).forEach(function(key){ 
                     console.log(data[key].status);
                 })
+                }, 
+                details:function(){ 
+                    this.$router.push('/details/'+ this.orders.id)
                 }
             },  
         created: function(){ 
-            this.$http.get("order").then(function(response){ 
+            this.$http.get("order/").then(function(response){ 
                 this.orders = response.data; 
             })
         }, 
@@ -91,5 +95,10 @@
       #options{ 
         padding-left: 150px !important;
     } 
+
+    #details{ 
+        cursor: pointer; 
+        text-decoration: underline;
+     } 
    
 </style>

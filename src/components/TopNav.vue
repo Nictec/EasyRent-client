@@ -2,6 +2,7 @@
     <div> 
      <ul class="topnav" id="myTopnav"> 
          <li class="heading">EasyRent</li> 
+         <li id="date">{{now}}</li> 
          <div class="usermenue"> 
              <li>
                 <i class="fa fa-bell" aria-hidden="true"></i>
@@ -18,12 +19,19 @@
 
 
 <script> 
+    import moment from "moment"
     export default { 
         name: 'topnav', 
         data () { 
          return{ 
            user_dropdown:false,
-         }
+         } 
+        }, 
+        computed:{ 
+            now:function(){ 
+               var formated = moment().format('dddd D'+". "+"MMM YYYY"); 
+               return formated;
+            }
         }, 
         methods: { 
             cInfo: function(){ 
@@ -96,4 +104,8 @@ ul.topnav li.icon {display: none;}
     .usermenue:hover{ 
         color: #d6d6d6;
     } 
+
+    #date{ 
+        padding-left:30em;
+     } 
 </style>
