@@ -4,6 +4,8 @@ import moment from 'moment'
 import Hello from './templates/Hello.vue' 
 import Test from './templates/Test.vue' 
 import Equipment from './templates/Equipment.vue' 
+import shelfs from './templates/shelfs.vue' 
+import newShelf from './templates/newShelf.vue'
 import EquipmentDetails from './templates/EquipmentDetails.vue' 
 import Dashboard from './templates/Dashboard.vue' 
 import Details from './templates/details.vue' 
@@ -15,8 +17,7 @@ import NewOrder from './templates/NewOrder.vue'
 import chooseeq from './templates/chooseeq.vue'
 import App from './App.vue'
 import VueRouter from 'vue-router' 
-import VueResource from 'vue-resource'
-    
+import VueResource from 'vue-resource'   
 Vue.use(VueRouter) 
 Vue.use(VueResource)
 
@@ -28,6 +29,17 @@ Vue.use(VueResource)
         weekdays : "Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag_Sonntag".split("_")
     }); 
 
+//global functions 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+} 
+
+//vue stuff
 
 const router = new VueRouter({  
       mode: 'hash',
@@ -42,7 +54,9 @@ const router = new VueRouter({
         {path: '/new-order', component: NewOrder}, 
         {path: '/choose-eq/:order_id', component: chooseeq}, 
         {path: '/equipment-list/:order_id', component: equipmentList}, 
-        {path: '/details/:order_id', component: Details},
+        {path: '/details/:order_id', component: Details}, 
+        {path: '/regale/', component: shelfs}, 
+        {path: '/new-shelf/', component: newShelf},
     ]
 });
 

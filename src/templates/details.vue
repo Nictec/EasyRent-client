@@ -10,24 +10,27 @@
 			{{edate}} 
 			<h4 class="Heading">Gästeanzahl:</h4> 
 			{{order.GuestNumber}} 
+			<div class="col"> 
 			<h4 class="Heading">Beschreibung:</h4> 
 			<p class="description">{{order.description}}</p> 
-			<h4 class=Heading>Ort der Veranstaltung:</h4> 
-			  <map :center=order.city :zoom="7"></map>
+			<h4 class="Heading">Adresse der Veranstaltung:</h4> 
+				<span id="adrData"><span class="sub">Ort:</span> {{order.city}}  <span id="street"><span class="sub">Straße und Nummer:</span> {{order.street}}
+				</span></span> 
+				<h4 class=Heading>Benötigtes Equipment: </h4> 
+				<span class="btn-transparent" @click="$router.push('/equipment-list/'+orderId+'/')">Equipment anzeigen</span>
+			</div>
 			
 		</div>
 	</div>
 </template>
 
-<script> 
-	import {load, Map, Marker} from 'vue-google-maps' 
+<script>  
 	import moment from 'moment' 
 	// moment.locale("en");
 
 	export default{ 
 		name: "details", 
-		components:{ 
-			Map
+		components:{
 		}, 
 		data(){ 
 			return{ 
@@ -65,12 +68,7 @@
         created: function(){ 
             this.$http.get("order/"+this.orderId+"/").then(function(response){ 
                 this.order = response.data;  
-            }) 
-            load({
-    			'key': 'AIzaSyCWZVcYSMx3QQ3PBXMMh3BxQmSipWL0SZo', 
-    			'libraries': 'places', 
-
-		})
+            })
 	} 
 }
 
@@ -86,5 +84,24 @@ body{
  .description{ 
  	padding-right: 10px; 
  	text-align: left;
-  }
+  } 
+
+  .col{ 
+  	margin-left:20em; 
+  	margin-top: -20em;
+   } 
+
+   #street{ 
+   		padding-left:15px; 
+
+    } 
+
+    .sub{ 
+    	font-weight: bolder !important; 
+    	font-size: 20px;
+     } 
+
+    #adrData{ 
+    	font-size: 18px;
+     }
 </style>

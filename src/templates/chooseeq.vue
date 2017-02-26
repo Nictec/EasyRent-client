@@ -94,7 +94,9 @@ export default {
             formData.append('equipment', this.equipment_id); 
             this.$http.post('assignment/', formData, {emulateJSON:true}).then(function(response){ 
               console.log("successfully submitted"); 
-              this.alert=true;
+              this.alert=true; 
+              sleep(2000); 
+              this.alert=false;
             })  
     },
   },

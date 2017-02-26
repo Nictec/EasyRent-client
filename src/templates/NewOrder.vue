@@ -11,11 +11,8 @@
        </span>
           <br>  
            <label for="date">Beginn des Auftrages</label> 
-          <br>
-          <input type="date" name="dateStart" v-model="dateStart" placeholder="start datum" id="additionalBtn"> 
-          <span class="btn-blue small square" id="chose"> 
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-          </span> 
+          <br> 
+          <input type="date" name="date" v-model="dateStart">
           <span v-if="errors.name" class="error">
            <br>
            {{errorMessage}}
@@ -111,9 +108,13 @@
 </template> 
 
 
-<script>
-    export default{ 
-        name: "neworder", 
+<script> 
+    
+    export default{  
+        name: "neworder",
+        components:{ 
+         
+        }, 
         data(){ 
             return{ 
                 name:"",
@@ -132,7 +133,6 @@
                 client_modal:false, 
                 errorMessage: "Dieses Feld darf nicht leer sein",
                 errors:{}, 
-                
             }
         }, 
         methods:{ 

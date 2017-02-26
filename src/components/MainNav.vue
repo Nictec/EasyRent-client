@@ -1,18 +1,34 @@
 <template> 
-<div class="sidenav" id=mySidenay>
-    <router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</router-link> 
-<!--    <router-link to="/test">Test</router-link> -->
-    <router-link to="/equipment"><i class="fa fa-server" aria-hidden="true"></i>
-Logistik</router-link> 
-<router-link to="/orders"><i class="fa fa-cubes" aria-hidden="true"></i>
-Aufträge</router-link>
-</div> 
+    <div class="sidenav" id=mySidenay>
+        <router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</router-link> 
+        <span @click="open"><i class="fa fa-server" aria-hidden="true"></i> Logistik <i class="fa fa-caret-down" aria-hidden="true"></i>
+</span> 
+        <div class="dropdown" v-if="dropdown">
+            <router-link to="/equipment/"><i class="fa fa-microphone" aria-hidden="true"></i> Equipment</router-link> 
+            <router-link to="/regale/"><i class="fa fa-server" aria-hidden="true"> Regale</a>
+        </div> 
+        <router-link to="/orders"><i class="fa fa-cubes" aria-hidden="true"></i> Aufträge</router-link> 
+        </div> 
 </template> 
 
 
 <script> 
     export default { 
         name: 'MainNav', 
+        data(){ 
+            return{ 
+                dropdown: false,
+            }
+        }, 
+        methods:{ 
+            open: function(){ 
+                if (this.dropdown===false){ 
+                    this.dropdown = true;
+                }else{ 
+                    this.dropdown = false;
+                }
+            }
+        } 
     }
 </script> 
 
@@ -49,7 +65,24 @@ Aufträge</router-link>
     color: #818181;
     display: block;
     transition: 0.3s
-}
+} 
+
+.sidenav span{ 
+    padding: 8px 8px 8px 32px; 
+    text-decoration: none;
+    font-size: 18px; 
+    font-family: roboto; 
+    border-bottom: solid; 
+    border-width: 1.5px; 
+    color: #818181;
+    display: block;
+    transition: 0.3s 
+ } 
+
+ .sidenav span:hover{ 
+    color: #f1f1f1; 
+    cursor: pointer;
+  }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
@@ -63,5 +96,21 @@ Aufträge</router-link>
     
     @media screen and (max-width: 1356px) { 
         .sidenav {width: 9em;}
-    }
+    } 
+
+ .dropdown a{ 
+    border:none !important;  
+    font-size: 16px; 
+    padding-left:50px;
+  } 
+
+  .dropdown{ 
+    border-bottom:solid; 
+    border-width: 1.5px; 
+    color: #818181; 
+   } 
+
+   .fa-caret-down{ 
+        padding-left:110px;
+    }   
 </style>

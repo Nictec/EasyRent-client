@@ -1,20 +1,6 @@
 <template> 
  <div class="orders"> 
     <router-link class="btn-transparent pull-right top-space" to="/new-order" id="new">Neue Veranstaltung öffnen</router-link> 
-<!--
-     <table> 
-         <tr>  
-             <th id="top">Name</th> 
-             <th id="top">Status</th> 
-             <th id="top">Optionen</th>
-         </tr> 
-         <tr v-for="orders in orders"> 
-             <th>{{orders.name}}</th> 
-             <th> <status :orders="orders"></status></th> 
-             <th></th>
-         </tr>
-     </table> 
---> 
     <div class="container-fluid main" style="margin-top: 10px"> 
         
         <div class="table-row header">
@@ -38,12 +24,26 @@
                     </div> 
                     
                     <div class="wrapper text" id="options"> 
-                        <div class="text" v-bind:title="linfo"><span class="btn-blue" @click="$router.push('/equipment-list/'+ orders.id)"><i class="fa fa-list" aria-hidden="true"></i></span></div>  
+                        <div class="text" v-bind:title="linfo"><span class="btn-blue" @click="$router.push('/equipment-list/'+ orders.id)"><i class="fa fa-list" aria-hidden="true"></i></span></div> 
+                        <div class="text"> <span class="btn-red" @click="open(orders.id, orders.name)"><i class="fa fa-trash" aria-hidden="true"></i></span></div>  
                     </div>
                 </div>
             </div>
+    </div> 
+    <div id="WarningModal" class="modal" v-if="modal">
+            <div class="modal-content"> 
+                <div class="modal-header"> 
+                    <h3>Warnung</h3> 
+                     <span class="close" @click="modal = false">&times;</span>
+                    </div> 
+                        <bold>{{ modal_text }}</bold> 
+                    <div class="options"> 
+                    <a class="btn-blue" @click="modal = false">Abbrechen</a> 
+                    <a class="btn-red" @click="del()">Löschen</a> 
+                </div>
+            </div>
+        </div> 
     </div>
- </div>
 </template> 
 
 
@@ -57,7 +57,10 @@
                 orders:[], 
                 order: "", 
                 linfo:"Benötigtes Equipment anzeigen", 
-                Details:"Details anzeigen",
+                Details:"Details anzeigen", 
+                modal_text:"", 
+                modal: false, 
+                id:"",
             }
         }, 
         components:{ 
@@ -72,6 +75,19 @@
                 }, 
                 details:function(){ 
                     this.$router.push('/details/'+ this.orders.id)
+                }, 
+                open:function(id, name){ 
+                    this.modal_text="Wollen Sie den Auftrag "+name+" wirklich löschen?"; 
+                    this.modal = true; 
+                    this.id = id;
+                }, 
+                del:function(){ 
+                    this.$http.delete('order/'+this.id+"/").then(function(response){ 
+                        console.log("sucessfully  deleted");
+                        this.$http.get("order/").then(function(response){ 
+                            this.orders = response.data;
+                        })
+                    })
                 }
             },  
         created: function(){ 

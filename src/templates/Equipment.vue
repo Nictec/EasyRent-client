@@ -2,30 +2,7 @@
 
 <div class="equipment">  
 <router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment registrieren</router-link>
-<!--
-<table> 
-    <tr> 
-        <th id="top">Name</th> 
-        <th id="top">Hersteller</th> 
-        <th id="top">Gesamtanzahl</th> 
-        <th id="top">id</th> 
-        <th id="top">Optionen</th>
-    </tr> 
-    <tr v-for="equipment in equipment"> 
-        <th>{{ equipment.name }}</th>
-        <th>{{ equipment.fabricator }}</th>
-        <th>{{ equipment.max_quantity }}</th> 
-        <th>{{ equipment.id }}</th>
-        <th><a class="btn-red" v-on:click="opm(equipment.id, equipment)">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-            löchen
-        </a></th>
-    </tr>
-</table> 
---> 
-
 <div class="container-fluid main" style="margin-top: 10px" v-show="!loading"> 
-    
     <div class="table-row header"> 
         <div class="wrapper text-4">
             <div class="wrapper text-2">  
