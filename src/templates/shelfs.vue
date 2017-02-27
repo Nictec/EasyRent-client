@@ -10,8 +10,8 @@
 					<div class="text">Optionen</div>
 				</div>
 			</div> 
-			<div class="table-row" id="row">
-				<div class="wrapper text-4" v-for="shelf in shelf">
+			<div class="table-row" id="row" v-for="shelf in shelf">
+				<div class="wrapper text-4">
 					<div class="text">{{shelf.name}}</div> 
 					<div class="text">{{shelf.row}}</div> 
 					<div class="text">{{shelf.sNr}}</div> 
