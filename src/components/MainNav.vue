@@ -22,11 +22,7 @@
         }, 
         methods:{ 
             open: function(){ 
-                if (this.dropdown===false){ 
-                    this.dropdown = true;
-                }else{ 
-                    this.dropdown = false;
-                }
+                   this.dropdown = !this.dropdown;
             }
         } 
     }

@@ -29,15 +29,7 @@ Vue.use(VueResource)
         weekdays : "Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag_Sonntag".split("_")
     }); 
 
-//global functions 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-} 
+
 
 //vue stuff
 

@@ -1,6 +1,10 @@
 # easyrent-client
 
-> Client of the EasyRent Project (currently in heavy development)
+> Client of the EasyRent Project (currently in heavy development) 
+
+##About 
+
+Easyrent is a equipment management system for bands and rental companies. It is based on Django, Django REST Framework and vue.js. The project is usable but far from finished. Feel free to download and test it and if you have any ideas or feature requests please let me know. 
 
 ## Build Setup
 

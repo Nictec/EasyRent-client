@@ -83,9 +83,10 @@
                 }, 
                 del:function(){ 
                     this.$http.delete('order/'+this.id+"/").then(function(response){ 
-                        console.log("sucessfully  deleted");
+                        console.log("sucessfully  deleted"); 
                         this.$http.get("order/").then(function(response){ 
-                            this.orders = response.data;
+                            this.orders = response.data; 
+                            this.modal = false;
                         })
                     })
                 }

@@ -65,7 +65,16 @@
 </div> 
 </template>
 
-<script>
+<script> 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+} 
+
 export default {
   name: 'chooseeq',
   data () {
@@ -95,7 +104,7 @@ export default {
             this.$http.post('assignment/', formData, {emulateJSON:true}).then(function(response){ 
               console.log("successfully submitted"); 
               this.alert=true; 
-              sleep(2000); 
+              sleep(5000); 
               this.alert=false;
             })  
     },
