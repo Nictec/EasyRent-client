@@ -88,7 +88,7 @@ body{
 
   .col{ 
   	margin-left:20em; 
-  	margin-top: -20em;
+  	margin-top: -17em;
    } 
 
    #street{ 

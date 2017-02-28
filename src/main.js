@@ -1,12 +1,14 @@
 import Vue from 'vue' 
 import _ from 'underscore' 
-import moment from 'moment'
+import moment from 'moment' 
+import VueMarkdown from 'vue-markdown'
 import Hello from './templates/Hello.vue' 
 import Test from './templates/Test.vue' 
 import Equipment from './templates/Equipment.vue' 
 import shelfs from './templates/shelfs.vue' 
 import newShelf from './templates/newShelf.vue'
 import EquipmentDetails from './templates/EquipmentDetails.vue' 
+import EquipmentEdit from './templates/EquipmentEdit.vue' 
 import Dashboard from './templates/Dashboard.vue' 
 import Details from './templates/details.vue' 
 import NewEq from './templates/NewEq.vue' 
@@ -40,6 +42,7 @@ const router = new VueRouter({
         {path: '/test', component: Test}, 
         {path: '/equipment', component: Equipment}, 
         {path: '/equipment/:equipment_id', component: EquipmentDetails}, 
+        {path: '/equipment-edit/:equipment_id', component: EquipmentEdit}, 
         {path: '/neweq', component: NewEq}, 
         {path: '/orders', component: Orders}, 
         {path: '/order-details/:event', component: OrderDetails, props:true }, 
@@ -52,7 +55,7 @@ const router = new VueRouter({
     ]
 });
 
-Vue.http.options.root = 'http://localhost:8000/api'
+Vue.http.options.root = 'http://localhost:8000'
 //new Vue({ 
 //router,
 //}).$mount('#app') 

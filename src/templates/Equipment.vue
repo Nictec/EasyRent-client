@@ -22,7 +22,7 @@
     <div class="table-row" v-for="equipment in equipment"> 
        <div class="wrapper text-4"> 
            <div class="wrapper text-2"> 
-               <div class="text">{{equipment.fabricator}}</div>
+               <div class="text" @click="$router.push('/equipment/'+ equipment.id)" id="link">{{equipment.fabricator}}</div>
                <div class="text">{{equipment.name}}</div>
            </div> 
            <div class="wrapper text-2">
@@ -34,8 +34,8 @@
                    <a class="btn-red" id="delete" v-on:click="opm(equipment.id, equipment)" v-bind:title="dinfo">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                    </a> 
-                   <span class="btn-blue" @click="$router.push('/equipment/'+ equipment.id)">
-                       <i class="fa fa-info" aria-hidden="true"></i>
+                   <span class="btn-blue" @click="$router.push('/equipment-edit/'+ equipment.id)">
+                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </span>   
                </div>  
            </div>
@@ -176,5 +176,10 @@ body{
     #options{ 
         padding-left: 30px;
     }
+
+    #link{ 
+      cursor: pointer; 
+      text-decoration: underline;
+     }
     
 </style>

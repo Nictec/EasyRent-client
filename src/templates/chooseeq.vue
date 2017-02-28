@@ -83,7 +83,8 @@ export default {
         modal: false, 
         alert: false, 
         number: 1, 
-        equipment_id:"",
+        equipment_id:"", 
+        filter:"L",
     }
    },
   methods: { 
@@ -112,7 +113,7 @@ export default {
   computed: {
     orderId(){
       return this.$route.params.order_id
-    }
+    }, 
   }, 
     
   created: function(){ 

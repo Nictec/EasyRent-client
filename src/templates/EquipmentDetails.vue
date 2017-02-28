@@ -2,26 +2,27 @@
 <template> 
   <div class="equipment">  
     <h1>{{equipment.fabricator}} {{equipment.name}}</h1> 
-    <div id="description"> 
-        <ul> 
-            <li>maximal verfügbare Anzahl: {{equipment.max_quantity}}</li> 
-            <br>  
-            <li>Lagerort: Regal {{equipment.storeplace}}</li> 
-            <br> 
-            <li>Features:</li> 
-            <li id="desfield"><pre style="font-family: roboto;">{{equipment.features}}</pre></li>
-            <br> 
-            <li>Beschreibung:</li>
-            <br> 
-            <li id="desfield">{{equipment.beschreibung}}</li>
-        </ul>
-    </div>
+    <br> 
+    <h4>Beschreibung:</h4> 
+    {{equipment.beschreibung}} 
+    <h4>Features:</h4> 
+    <vue-markdown :source="equipment.features"></vue-markdown> 
+    <h4>Gewerk:</h4> 
+    {{labor}} 
+    <h4>Vermietpreis:</h4> 
+    {{equipment.rent_price}}€ 
+    <h4>Einkaufspreis:</h4> 
+    {{equipment.purchasing_price}}€
   </div>
 </template>
 
-<script>
+<script> 
+import VueMarkdown from 'vue-markdown'
 export default {
-  name: 'equipmentEdit',
+  name: 'equipmentEdit', 
+  components:{ 
+    'vue-markdown': VueMarkdown
+  },
   data () {
     return { 
         equipment: "", 
@@ -30,6 +31,13 @@ export default {
   computed: {
     equipmentId(){
       return this.$route.params.equipment_id
+    }, 
+    labor(){ 
+      if (this.equipment.labor === 'L'){
+        return "Licht";
+      }else{
+        return "Ton";
+      };
     }
   }, 
   created: function(){
@@ -49,5 +57,13 @@ export default {
     #desfield{ 
             list-style: none; 
             padding-left: 3em;
-     }    
+     } 
+
+     h1{ 
+      color:#db6900; 
+}
+      h4{ 
+        color:#db6900; 
+      } 
+
 </style>
