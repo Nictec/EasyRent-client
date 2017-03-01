@@ -14,7 +14,9 @@
 			<br>
 			<input type="number" name="shelf" v-model="sId"> 
 			<br> 
-			<span class="btn-blue" id="button" v-on:click="save">speichern</span> 
+			<span class="btn-transparent" id="button" v-on:click="save">speichern</span> 
+            <span class="btn-transparent" id="button2" v-on:click="saveandgo">speichern und schließen</span> 
+            <span class="btn-transparent" id="button3" v-on:click="$router.push('/regale/')">abbrechen</span> 
 		</div> 
 		 <div class="alert" v-show="alert">
   			<span @click="alert=false">&times;</span> <h3>Regal hinzugefügt</h3>  
@@ -45,7 +47,19 @@
 					console.log("submitted"); 
 					this.alert = true;
 				})
-			}
+			}, 
+            saveandgo:function(){ 
+                console.log("started")
+                var formData = new FormData(); 
+                formData.append('name', this.name); 
+                formData.append('row', this.row); 
+                formData.append('sNr', this.sId); 
+                console.log("appended") 
+                this.$http.post('shelf/', formData, {emulateJSON:true}).then(function(response){ 
+                    console.log("submitted"); 
+                    this.$router.push('/regale/');
+                })
+            }
 		}
 	}
 </script>
@@ -128,8 +142,16 @@
     } 
 
    #button{ 
-   	margin-left: 33em;
-    }
+   	margin-left: 11em;
+    } 
+
+    #button2{ 
+       margin-left: -3em;
+     } 
+
+     #button3{ 
+        margin-left: -0.3em;
+      }
     
 </style>
 

@@ -14,7 +14,8 @@
 					<div class="text" id="checkbox"><span class="btn-blue" @click="giveback(assignment.quantity, assignment.equipment_data.id, index)">zurückgeben</span></div> 				
 			</div>
 		</div> 
-		<span class="btn-blue pull-right" id="button" v-on:click="del">Auftrag löschen</span> 
+		<span class="btn-red pull-right" id="button" v-on:click="del">Auftrag löschen</span> 
+		<span class="btn-blue pull-right" id="button2" v-on:click="$router.push('/orders/')">abbrechen</span> 
 	</div>
 </template>
 
@@ -60,5 +61,10 @@
 <style lang="less" scoped>
 	#button{ 
 		margin-top:30px;
-	 }
+	 } 
+
+	 #button2{ 
+	 	margin-top: 30px; 
+	 	margin-right:-45em;
+	  }
 </style>

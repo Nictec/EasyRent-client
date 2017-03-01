@@ -8,6 +8,7 @@
             <router-link to="/regale/"><i class="fa fa-server" aria-hidden="true"> Regale</a>
         </div> 
         <router-link to="/orders"><i class="fa fa-cubes" aria-hidden="true"></i> Aufträge</router-link> 
+        <router-link to="/kunden"><i class="fa fa-users" aria-hidden="true"></i> Kunden</router-link>  
         </div> 
 </template> 
 

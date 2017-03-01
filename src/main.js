@@ -17,7 +17,8 @@ import deleteOrder from './templates/deleteOrder.vue'
 import Orders from './templates/Orders.vue' 
 import OrderDetails from './templates/OrderDetails.vue' 
 import NewOrder from './templates/NewOrder.vue' 
-import chooseeq from './templates/chooseeq.vue'
+import chooseeq from './templates/chooseeq.vue' 
+import clients from './templates/clients.vue'
 import App from './App.vue'
 import VueRouter from 'vue-router' 
 import VueResource from 'vue-resource'   
@@ -52,7 +53,8 @@ const router = new VueRouter({
         {path: '/details/:order_id', component: Details}, 
         {path: '/regale/', component: shelfs}, 
         {path: '/new-shelf/', component: newShelf}, 
-        {path: '/delete/:order_id', component: deleteOrder},
+        {path: '/delete/:order_id', component: deleteOrder}, 
+        {path: '/kunden/', component: clients},
     ]
 });
 

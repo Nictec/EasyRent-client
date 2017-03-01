@@ -84,7 +84,8 @@
            {{errorMessage}}
        </span> 
       </div> 
-      <span class="btn-blue next" @click="save">
+      <span class="btn-transparent next" @click="$router.push('/orders/')">abbrechen</span> 
+      <span class="btn-transparent" @click="save">
             weiter <i class="fa fa-arrow-right" aria-hidden="true"></i>
       </span> 
       <div class="modal" v-if="client_modal"> 
@@ -266,6 +267,6 @@
     } 
     
     .next{ 
-        margin-left: 58em; 
+        margin-left: 53em; 
     }
 </style>
