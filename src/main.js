@@ -33,7 +33,6 @@ Vue.use(VueResource)
     }); 
 
 
-
 //vue stuff
 
 const router = new VueRouter({  
