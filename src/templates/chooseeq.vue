@@ -27,11 +27,11 @@
            </div> 
            <div class="wrapper text-2">
                <div class="text">{{equipment.max_quantity}}</div>
-               <div class="text">5</div>
+               <div class="text">{{equipment.avail_quantity}}</div>
            </div> 
            <div class="wrapper text" id="options"> 
                <div class="text"> 
-                   <a class="btn-blue" id="delete" v-on:click="open(equipment.id)" v-bind:title="dinfo">
+                   <a class="btn-blue" id="delete" v-on:click="open(equipment.id, equipment.avail_quantity)" v-bind:title="dinfo">
                         zuordnen
                    </a>  
                </div>  
@@ -52,11 +52,10 @@
         <span class="close" @click="modal = false">&times;</span>
     </div> 
     <input v-model="number" type="number" id="number">
-    <div class="options" id="button"> 
+    <div class="options"> 
        <a class="btn-transparent" @click="choose">OK</a> 
     </div>
 </div>
-  
 </div> 
  <!-- alert -->
   <div class="alert" v-show="alert">
@@ -82,6 +81,7 @@ export default {
         equipment:"", 
         modal: false, 
         alert: false, 
+        da:"", 
         number: 1, 
         equipment_id:"", 
         filter:"L",
@@ -89,31 +89,53 @@ export default {
    },
   methods: { 
 
-    open: function(id){ 
+    open: function(id, quant){ 
       this.modal=true; 
-      this.equipment_id=id
+      this.equipment_id=id; 
+      this.da = quant;
     }, 
     choose: function(){ 
        var equipment = this.equipment_id; 
        var quantity = this.number; 
        var order = this.orderId; 
+       if (quantity <= this.da){ 
        this.modal=false; 
             var formData = new FormData();
             formData.append('quantity', this.number); 
             formData.append('order', this.orderId); 
             formData.append('equipment', this.equipment_id); 
             this.$http.post('assignment/', formData, {emulateJSON:true}).then(function(response){ 
-              console.log("successfully submitted"); 
-              this.alert=true; 
-              sleep(5000); 
-              this.alert=false;
-            })  
-    },
+            console.log("successfully submitted"); 
+            this.update()
+            }) 
+            }else{ 
+              if (this.da > 1){ 
+                var wort = "sind";
+              }else{ 
+                wort = "ist";
+              }; 
+              alert("Von diesem Equipment "+wort+" nur mehr "+this.da+" Stück vorhanden!");
+            }  
+    }, 
+        update(){ 
+            var neu = this.da - this.number 
+            var FD = new FormData 
+            FD.append('avail_quantity', neu) 
+            this.$http.patch('equipment/'+this.equipment_id+'/', FD, {emulateJSON:true}).then(function(){ 
+            console.log("successfully updated") 
+            this.alert=true; 
+            sleep(5000); 
+            this.alert=false; 
+            }) 
+        } 
   },
   computed: {
     orderId(){
       return this.$route.params.order_id
     }, 
+    available(){ 
+      return this.equipment.avail_quantity;
+    } 
   }, 
     
   created: function(){ 
@@ -121,7 +143,8 @@ export default {
        .then( 
         function(response){
              this.equipment = response.data; 
-        });
+        }); 
+
    }
 }
 </script>

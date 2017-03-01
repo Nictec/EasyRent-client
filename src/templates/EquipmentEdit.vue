@@ -6,7 +6,7 @@
     <div class="form"> 
       <label for="description">Beschreibung:</label> 
       <br> 
-      <input type="text" name="description" :placeholder="equipment.beschreibung" v-model="description"> 
+      <textarea type="text" name="description" :placeholder="equipment.beschreibung" v-model="description" cols="72" rows="10"></textarea> 
       <br> 
       <label for="max">Bestand</label> 
       <br> 
@@ -20,7 +20,7 @@
       <br> 
       <input type="number" name="pp" :placeholder="equipment.purchasing_price+'€'" v-model="purchasing_price"> 
     </div> 
-    <span class="btn-blue" id="button" @click="save">speichern</span> 
+    <span class="btn-transparent" id="button" @click="save">speichern</span> 
     <div class="alert" v-show="alert_open">
       <span @click="alert_open=false">&times;</span> <h3>Item Updated</h3>  
     </div>  
@@ -153,6 +153,6 @@ export default {
     } 
 
   #button{ 
-    margin-left:47em;
+    margin-left:47em; 
   }    
 </style>

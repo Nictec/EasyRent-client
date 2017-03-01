@@ -27,11 +27,11 @@
            </div> 
            <div class="wrapper text-2">
                <div class="text">{{equipment.max_quantity}}</div>
-               <div class="text">5</div>
+               <div class="text">{{equipment.avail_quantity}}</div>
            </div> 
            <div class="wrapper text" id="options"> 
                <div class="text"> 
-                   <a class="btn-red" id="delete" v-on:click="opm(equipment.id, equipment)" v-bind:title="dinfo">
+                   <a class="btn-red" id="delete" v-on:click="opm(equipment.id, equipment.name)" v-bind:title="dinfo">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                    </a> 
                    <span class="btn-blue" @click="$router.push('/equipment-edit/'+ equipment.id)">
@@ -96,7 +96,7 @@ export default {
         opm: function(id, name){ 
         this.delete_modal_open = true; 
         this.modal_head = "Warnung"; 
-        this.modal_text = "Wollen Sie dieses Gerät wirklich löschen?" 
+        this.modal_text = 'Wollen Sie "'+name+'" wirklich löschen?' 
         this.modal_options = ` ` 
        
         this.item = id; 

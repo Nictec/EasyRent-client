@@ -27,7 +27,7 @@ Vue.use(VueResource)
 
     moment.defineLocale("de",{
         months : "Jänner_Februar_März_April_Mai_Juni_Juli_August_Septermber_Oktober_November_Dezember".split("_"), 
-        monthsShort : "Jän_Feb_Mrz_Apr_Mai_Juni_Juli_Aug_Sept_Okt_Nov_Dez".split("_"), 
+        monthsShort : "Jän_Feb_März_Apr_Mai_Juni_Juli_Aug_Sept_Okt_Nov_Dez".split("_"), 
         weekdays : "Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag_Sonntag".split("_")
     }); 
 

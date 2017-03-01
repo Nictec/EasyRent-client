@@ -138,7 +138,7 @@
         methods:{ 
             
          client_add: function(){ 
-         this.$http.get("clients/all").then(function(response){
+         this.$http.get("client").then(function(response){
          this.clientlist = response.data;}); 
          this.client_modal=true;
          },

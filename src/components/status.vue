@@ -10,8 +10,7 @@
     computed:{ 
         symbol: function(){ 
             if (this.orders.status === "ok"){ 
-                return `<i class="fa fa-check" aria-hidden="true"></i>
-`
+                return '<p>Bereit</p>'
             }else{return '<p>in Bearbeitung<p>'}
         }
     }

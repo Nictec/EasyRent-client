@@ -42,8 +42,12 @@
      <label for="max_quantity">Bestand</label> 
      <br>
      <input type="number" name="max_quantity" v-model="max_quantity"> 
+     <br> 
+     <label for="features">Features(Markdown)</label> 
+     <br> 
+     <textarea name="features" cols="72" rows="10" v-model="features"></textarea> 
      <br>
-     <label for="description">Beschreibung</label> 
+     <label for="description" >Beschreibung</label> 
      <br> 
      <textarea name="description" cols="72" rows="10" v-model="description">
      </textarea>
@@ -71,6 +75,7 @@
         max_quantity:"", 
         status:"im Lager", 
         shelf:{}, 
+        features:"", 
         description:"",
         errors:{}, 
         tester:"",
@@ -87,7 +92,9 @@
             formData.append('max_quantity', this.max_quantity); 
             formData.append('status', this.status); 
             formData.append('shelf', this.shelf); 
+            formData.append('features', this.features); 
             formData.append('beschreibung', this.description); 
+            formData.append('avail_quantity', this.max_quantity); 
 //            formData.append('Image', this.Image);
             this.$http.post('equipment/', formData,{emulateJSON: true}).then(function(response){ 
             this.errors = [];
@@ -97,7 +104,8 @@
             this.storeplace=""; 
             this.labor=""; 
             this.max_quantity=""; 
-            this.description="";
+            this.description=""; 
+            this.features=""
             this.alert="Erfolgreich gespeichert"; 
             this.alert_open = true;
             console.log("form cleared");
@@ -164,6 +172,7 @@
         background-color: @input-color;
         margin-bottom: 1em; 
         margin-right: 0em; 
+        height:100px; 
         font-family: roboto;
     }
     
