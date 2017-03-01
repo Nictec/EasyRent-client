@@ -58,7 +58,7 @@
 		}, 
 
 		open: function(id, name){ 
-			this.modal_text="Wollen sie das Regal"+name+"wirklich löschen?"
+			this.modal_text='Wollen sie das Regal "'+name+'" wirklich löschen?'
 			this.modal=true; 
 			this.id = id; 
 		}

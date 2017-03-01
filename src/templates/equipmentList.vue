@@ -41,7 +41,8 @@
   			var formData = new FormData; 
   			formData.append('status', status) 
   			this.$http.patch('order/'+this.orderId+"/", formData, {emulateJSON:true}).then(function(response){ 
-  				console.log("status updated");
+  				console.log("status updated"); 
+  				this.$router.push("/orders/");
   			});
   		}
   	}, 

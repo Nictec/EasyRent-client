@@ -13,6 +13,7 @@ import Dashboard from './templates/Dashboard.vue'
 import Details from './templates/details.vue' 
 import NewEq from './templates/NewEq.vue' 
 import equipmentList from './templates/equipmentList.vue' 
+import deleteOrder from './templates/deleteOrder.vue' 
 import Orders from './templates/Orders.vue' 
 import OrderDetails from './templates/OrderDetails.vue' 
 import NewOrder from './templates/NewOrder.vue' 
@@ -51,7 +52,8 @@ const router = new VueRouter({
         {path: '/equipment-list/:order_id', component: equipmentList}, 
         {path: '/details/:order_id', component: Details}, 
         {path: '/regale/', component: shelfs}, 
-        {path: '/new-shelf/', component: newShelf},
+        {path: '/new-shelf/', component: newShelf}, 
+        {path: '/delete/:order_id', component: deleteOrder},
     ]
 });
 

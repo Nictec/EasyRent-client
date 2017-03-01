@@ -25,7 +25,8 @@
                     
                     <div class="wrapper text" id="options"> 
                         <div class="text" v-bind:title="linfo"><span class="btn-blue" @click="$router.push('/equipment-list/'+ orders.id)"><i class="fa fa-list" aria-hidden="true"></i></span></div> 
-                        <div class="text"><span class="btn-blue" @click="$router.push('/choose-eq/'+orders.id)" :title="add"><i class="fa fa-plus" aria-hidden="true"></i></span></div>   
+                        <div class="text"><span class="btn-blue" @click="$router.push('/choose-eq/'+orders.id)" :title="add"><i class="fa fa-plus" aria-hidden="true"></i></span></div>  
+                        <div class="text"> <span class="btn-red" @click="$router.push('/delete/'+orders.id)"><i class="fa fa-trash" aria-hidden="true"></i></span></div>  
                     </div>
                 </div>
             </div>
