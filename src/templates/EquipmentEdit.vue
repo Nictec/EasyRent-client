@@ -47,11 +47,7 @@ export default {
         formData.append('beschreibung', this.description); 
       };
       if (this.max_quantity){ 
-        if (this.max_quantity>this.equipment.max_quantity)
-          {var r = (this.max_quantity - this.equipment.max_quantity);}else 
-          {var r = -(this.equipment.max_quantity-this.max_quantity);}   
         formData.append('max_quantity', this.max_quantity); 
-        formData.append('avail_quantity', this.equipment.avail_quantity+r);
       }; 
       if (this.rent_price){ 
         formData.append('rent_price', this.rent_price); 
