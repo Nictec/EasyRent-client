@@ -94,7 +94,6 @@
             formData.append('shelf', this.shelf); 
             formData.append('features', this.features); 
             formData.append('beschreibung', this.description); 
-            formData.append('avail_quantity', this.max_quantity); 
 //            formData.append('Image', this.Image);
             this.$http.post('equipment/', formData,{emulateJSON: true}).then(function(response){ 
             this.errors = [];
