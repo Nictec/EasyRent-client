@@ -116,8 +116,7 @@ export default {
         alert("Von diesem Equipment "+wort+" nur mehr "+this.da+" Stück vorhanden!");
       }  
     }, 
-  } 
-},
+  },
   computed: {
     orderId(){
       return this.$route.params.order_id
