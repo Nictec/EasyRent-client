@@ -133,7 +133,11 @@ export default {
   }
 </script>
 <style lang="less">
+<<<<<<< HEAD
 @import "../less/font-awesome.less";
+=======
+@import "../font-awesome-4.7.0/less/font-awesome.less";
+>>>>>>> df466c4f9dafcbe183f4b8519d7598b98f926cce
 @import "../external_css/tables.less";
 @import "../external_css/modals.less";
 @import "../external_css/buttons.less";

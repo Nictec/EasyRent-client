@@ -10,7 +10,11 @@
 			<div class="table-row" v-for="client in client">
 				<div class="text" id="FN">{{client.firstname}}</div>
 				<div class="text" id="SN">{{client.secondname}}</div>
+<<<<<<< HEAD
 				<div class="text"><span class="btn-red"><i class="fa fa-trash-o" aria-hidden="true"></i></div></span>
+=======
+				<div class="text"><span class="btn-red"><i class="fa fa-trash-o" aria-hidden="true"></i></span></div>
+>>>>>>> df466c4f9dafcbe183f4b8519d7598b98f926cce
 			</div>
 		</div>
 	</div>
@@ -35,7 +39,11 @@
 </script>
 
 <style lang="less" scoped>
+<<<<<<< HEAD
   #button{
     margin-top: 2em;
    }
+=======
+
+>>>>>>> df466c4f9dafcbe183f4b8519d7598b98f926cce
 </style>
