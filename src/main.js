@@ -18,6 +18,7 @@ import OrderDetails from './templates/OrderDetails.vue'
 import NewOrder from './templates/NewOrder.vue'
 import chooseeq from './templates/chooseeq.vue'
 import clients from './templates/clients.vue'
+import newClient from './templates/newClient.vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -53,6 +54,7 @@ const router = new VueRouter({
     {path: '/regale/', component: shelfs},
     {path: '/new-shelf/', component: newShelf},
     {path: '/kunden/', component: clients},
+    {path: '/newclient', component: newClient},
   ]
 });
 

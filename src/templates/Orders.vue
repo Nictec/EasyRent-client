@@ -112,7 +112,7 @@
     }
 
       #options{
-        padding-left: 150px !important;
+        padding-left: 40px !important;
     }
 
     #details{
