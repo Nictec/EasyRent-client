@@ -2,8 +2,8 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%; 
-    overflow-x: auto; 
+    width: 100%;
+    overflow-x: auto;
 }
 
 td, th {
@@ -14,22 +14,26 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
-} 
+}
 
-#top{ 
+#top{
     font-size:15pt;
-} 
+}
 
 
-//responsive table 
+//responsive table
 
 /*
  * Define the widths: play around with these to get a best fit.
  */
 @margin: 10px;
 @text-width: 185px;
-@num-width: 80px; 
+@num-width: 80px;
 @family: roboto;
+
+ @media screen and (max-width: 1356px) {
+
+}
 
 /*
  * Basic styles, good for a large display. Everything fits in
@@ -37,20 +41,24 @@ tr:nth-child(even) {
  */
 
 // Main container: initialize the flex, direction is row, no wrapping. width 100%
-.table-row {  
-    
+.table-row {
+
     display: flex;
     display: -webkit-flex;
-    -webkit-flex-direction: row; 
+    -webkit-flex-direction: row;
     -webkit-flex-wrap: no-wrap;
-    flex-direction: row;    
-    flex-wrap: no-wrap;     
-    width: 38em; 
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    width: 70%;
     margin-left: -2.5em !important;
-    padding-left: 80px; 
-    padding-right: 259px; 
-    border: solid #e0e0e0 1px; 
+    padding-left: 80px;
+    padding-right: 259px;
+    border: solid #e0e0e0 1px;
     border-top: none;
+
+     @media screen and (max-width: 1356px) {
+    margin-left: -5em;
+  }
 }
 
 // Wrappers around cells and other wrappers: flex, row
@@ -70,32 +78,32 @@ tr:nth-child(even) {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-right: 0px; 
+  padding-right: 0px;
   padding-left: -30px;
-  padding-bottom: 5px; 
+  padding-bottom: 5px;
   padding-top: 3px;
-  font-family: @family; 
-} 
+  font-family: @family;
+}
 
-.picture{ 
+.picture{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-right: 0px; 
-  padding-bottom: 5px; 
-  padding-top: 3px; 
-  height: 100px; 
+  padding-right: 0px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  height: 100px;
   width: 100px;
 }
 
 // Fix the minimum width of the leaf level cells
 .text {
-  width: @text-width; 
+  width: @text-width;
 }
 
 .num {
   width: @num-width;
-  text-align: right; 
+  text-align: right;
   font-family: @family;
 }
 
@@ -125,6 +133,7 @@ tr:nth-child(even) {
   // children's natural size
   .text-2 { width: @text-width; }
   .num-2  { width: @num-width;  }
+  .table-row { margin-left:-170px !important; }
 }
 
 // Second break: when two rows is not enough, make it four
@@ -148,8 +157,8 @@ tr:nth-child(even) {
   .num {
     text-align: left;
   }
-} 
-@media screen and (max-width: 1356px){ 
+}
+@media screen and (max-width: 1356px){
     .table-row{margin-left: -100px}
 }
 
@@ -157,11 +166,11 @@ tr:nth-child(even) {
  * General good-look styles, not mandatory.
  */
 body {
-  font-size: 20px; 
-  width: 100%; 
+  font-size: 20px;
+  width: 100%;
 }
 
-.table-row { 
+.table-row {
   overflow-x: hidden;
   border-bottom: 2px solid #e0e0e0;
   border-collapse: collapse;
@@ -169,13 +178,13 @@ body {
 }
 
 .table-row.header {
-  background-color: #3c3c3c; 
-  border-top: solid; 
+  background-color: #3c3c3c;
+  border-top: solid;
   border-top-width: 1px;
   font-weight: bold;
   padding-top: 8px;
-  padding-bottom: 7px; 
-} 
+  padding-bottom: 7px;
+}
 
 
 /* Some borders to show the behaviour. Uncomment to see it in action */

@@ -1,8 +1,9 @@
 <template>
 
 <div class="equipment">
+
 <router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment registrieren</router-link>
-<div class="container-fluid main" style="margin-top: 10px" v-show="!loading">
+<div class="container-fluid main"  v-show="!loading">
     <div class="table-row header">
         <div class="wrapper text-4">
             <div class="wrapper text-2">
@@ -29,15 +30,17 @@
                <div class="text">{{equipment.max_quantity}}</div>
                <div class="text">{{equipment.avail_quantity}}</div>
            </div>
-           <div class="wrapper text" id="options">
-               <div class="text">
+           <div class="wrapper text">
+              <div class="text">
                    <a class="btn-red" id="delete" v-on:click="opm(equipment.id, equipment.name)" v-bind:title="dinfo">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                    </a>
-                   <span class="btn-blue" @click="$router.push('/equipment-edit/'+ equipment.id)">
-                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    </span>
-               </div>
+              </div>
+                   <div class="text">
+                      <span class="btn-blue" @click="$router.push('/equipment-edit/'+ equipment.id)">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </span>
+                   </div>
            </div>
        </div>
     </div>
@@ -133,7 +136,7 @@ export default {
   }
 </script>
 <style lang="less">
-@import "../font-awesome-4.7.0/less/font-awesome.less";
+/*@import "../font-awesome-4.7.0/less/font-awesome.less";*/
 @import "../external_css/tables.less";
 @import "../external_css/modals.less";
 @import "../external_css/buttons.less";

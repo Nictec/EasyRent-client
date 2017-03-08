@@ -18,9 +18,12 @@ import OrderDetails from './templates/OrderDetails.vue'
 import NewOrder from './templates/NewOrder.vue'
 import chooseeq from './templates/chooseeq.vue'
 import clients from './templates/clients.vue'
+import newClient from './templates/newClient.vue'
+import clientDetails from './templates/clientDetails.vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import auth from './auth.js'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
@@ -29,8 +32,12 @@ Vue.use(VueResource)
 moment.defineLocale("de",{
   months : "Jänner_Februar_März_April_Mai_Juni_Juli_August_Septermber_Oktober_November_Dezember".split("_"),
   monthsShort : "Jän_Feb_März_Apr_Mai_Juni_Juli_Aug_Sept_Okt_Nov_Dez".split("_"),
-  weekdays : "Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag_Sonntag".split("_")
+  weekdays : "Sonntag_ Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag".split("_")
 });
+
+
+
+
 
 
 //vue stuff
@@ -52,14 +59,18 @@ const router = new VueRouter({
     {path: '/details/:order_id', component: Details},
     {path: '/regale/', component: shelfs},
     {path: '/new-shelf/', component: newShelf},
-    {path: '/kunden/', component: clients},
+    {path: '/clients/', component: clients},
+    {path: '/new-client/', component: newClient},
+    {path: '/client/:client_id', component: clientDetails},
   ]
 });
 
 Vue.http.options.root = 'http://localhost:8000'
-//new Vue({
-//router,
-//}).$mount('#app')
+Vue.http.interceptors.push((request, next) => {
+  request.headers.set('Authorization', auth.getAuthHeader())
+  next()
+});
+
 
 new Vue({
   router,
