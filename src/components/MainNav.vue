@@ -9,16 +9,20 @@
         </div>
         <router-link to="/orders"><i class="fa fa-cubes" aria-hidden="true"></i> Aufträge</router-link>
         <router-link to="/clients"><i class="fa fa-users" aria-hidden="true"></i> Kunden</router-link>
+        <span v-if="user.is_staff"><i class="fa fa-cogs" aria-hidden="true"></i> Einstellungen</span>
         </div>
+
 </template>
 
 
 <script>
+  import auth from '../auth.js'
     export default {
         name: 'MainNav',
         data(){
             return{
                 dropdown: false,
+                user: auth.user,
             }
         },
         methods:{

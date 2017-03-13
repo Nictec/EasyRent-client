@@ -1,12 +1,19 @@
 <template>
   <div class="clientDetails">
     <h1>Details zum Kunden {{client.firstname}} {{client.secondname}} </h1>
+    <br>
+    <h4>E-mail:</h4>
+      {{client.email}}
+    <h4>Ort:</h4>
+      {{client.post_code}} {{client.city}}
+    <h4>Straße:</h4>
+      {{client.street}}
   </div>
 </template>
 
 <script>
   export default{
-    name:"client Details",
+    name:"clientDetails",
     data(){
       return{
         client:"",

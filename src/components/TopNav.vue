@@ -3,9 +3,9 @@
      <ul class="topnav" id="myTopnav">
          <li class="heading">EasyRent</li>
          <li id="date">{{now}}</li>
-         <div class="usermenue" :title="user" @click="logout">
+         <div class="usermenue" :title="info" @click="logout">
              <li>
-              <i class="fa fa-sign-out" aria-hidden="true" id="logout"><span>logout</span></i>
+              <i class="fa fa-sign-out" aria-hidden="true" id="logout"><span>{{user.name}}</span></i>
             </li>
          </div>
      </ul>
@@ -20,7 +20,8 @@
         name: 'topnav',
         data () {
          return{
-           user:"ausloggen",
+           info:"ausloggen",
+           user: auth.user,
          }
         },
         computed:{

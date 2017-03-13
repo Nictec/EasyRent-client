@@ -5,10 +5,19 @@
 export default{
   user: {
     authenticated: false,
-    group: "",
+    is_superuser: false,
+    is_staff: false,
+    name:"",
   },
   error:false,
   logInfo:false,
+
+  check_permissions(context){
+    context.$http.get("current-user/").then(function(response){
+      this.user.is_superuser = response.data.is_superuser
+       this.user.is_staff = response.data.is_staff
+    })
+  },
 
   login(context, username, password){
     var data = new FormData()
@@ -18,6 +27,7 @@ export default{
       localStorage.setItem('id_token', response.data.token)
       this.user.authenticated = true
       console.log("login sucessful:"+response.data.token)
+      return
     },function(response){
       this.user.authenticated = false
       console.log("login failed")
@@ -51,11 +61,11 @@ export default{
     }
   },
 
-  check_permissions(context){
-    context.$http.get("current-user").then(function(response){
-      context.$http.get("http://localhost/user/"+response.data.id+"/").then(function(response){
-        this.user.group = response.data.groups
-      })
+  current_user(context){
+    context.$http.get("current-user/").then(function(response){
+      this.user.is_superuser = response.data.is_superuser
+       this.user.is_staff = response.data.is_staff
+       this.user.name = response.data.name
     })
   }
 

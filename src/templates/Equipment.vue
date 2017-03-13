@@ -1,7 +1,6 @@
 <template>
 
 <div class="equipment">
-
 <router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment registrieren</router-link>
 <div class="container-fluid main"  v-show="!loading">
     <div class="table-row header">
@@ -120,9 +119,6 @@ export default {
            this.alert_open = true;
 
        },
-
-       newEq: function(){
-       }
    },
    created: function(){
     this.$http.get("equipment/")
@@ -131,6 +127,15 @@ export default {
              this.equipment = response.data;
             this.loading = false;
         });
+   },
+   mounted(){
+    bus.$on('reload', function(){
+      console.log("received")
+      this.$http.get("equipment/").then(function(response){
+        this.equipment = response.data;
+        this.loading = false;
+      })
+    })
    }
 
   }
@@ -142,10 +147,13 @@ export default {
 @import "../external_css/buttons.less";
 @import "../external_css/alerts.less";
 
-body{
-    overflow: visible !important;
-    overflow-x: hidden;
-}
+    body{
+      background-color: #524f4f;
+      color: white;
+      font-family: roboto;
+      overflow: hidden;
+      overflow-x:hidden !important;
+    }
 #add{
         float:right;
         margin-bottom: 8px;

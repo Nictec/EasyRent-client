@@ -197,4 +197,8 @@ body{
       margin-right: 3.5em;
     }
 
+    #WarningModal{
+      height: 45em;
+    }
+
 </style>

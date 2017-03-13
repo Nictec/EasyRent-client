@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import _ from 'underscore'
 import moment from 'moment'
+window.$ = window.jQuery = require("jquery")
+import "./polyfiller.js"
 import VueMarkdown from 'vue-markdown'
 import Hello from './templates/Hello.vue'
 import Test from './templates/Test.vue'
@@ -35,9 +37,22 @@ moment.defineLocale("de",{
   weekdays : "Sonntag_ Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag".split("_")
 });
 
+//webshim config
 
-
-
+ webshim.setOptions("basePath", "/dist/shims/")
+  webshim.setOptions("forms-ext", {
+    replaceUI: false, //if "auto" is used here, it replaces it on some tablets it wouldnt need to
+                        //false means it really only replaces when necessary (eg. firefox, but not chrome)
+    types: "date number datetime-local",
+    date: {
+      startView: 2,
+      openOnFocus: true,
+    },
+    widgets: {
+      // calculateWidth: false,
+    },
+  });
+  webshim.polyfill("forms forms-ext");
 
 
 //vue stuff
@@ -72,7 +87,7 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 
-new Vue({
+ window.bus = new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')

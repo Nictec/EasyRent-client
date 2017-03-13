@@ -27,7 +27,7 @@
     </div>
     <span class="btn-transparent" id="btn-group" @click="save">speichern</span>
     <span class="btn-transparent" @click="saveandgo">speichern und schließen</span>
-    <span class="btn-transparent" @click="$router.push('/kunden/')">abbrechen</span>
+    <span class="btn-transparent" @click="$router.push('/clients/')">abbrechen</span>
     <div class="alert" v-show="alert">
   <span @click="alert=false">&times;</span> <h3>{{ alert_message }}</h3>
 </div>

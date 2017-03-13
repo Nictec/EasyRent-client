@@ -5,12 +5,12 @@
       <div class="modal" v-if="!user.authenticated">
       <div class="modal-content" :class="{wider: error}">
         <h3 id="header-text"><i class="fa fa-sign-in" aria-hidden="true"></i> EasyRent Login:</h3>
-          <div class="logmod" v-if="error"><p>Benuzername oder Passwort falsch <span @click="cls">&times</span></p></div>
+          <div class="logmod" v-show="error"><p>Benuzername oder Passwort falsch <span @click="cls">&times</span></p></div>
           <input type="text" name="username" class="top" placeholder="Benutzername" v-model="username">
           <br>
           <input type="password" name="password" placeholder="Passwort" v-model="password">
           <br>
-          <span class="btn-transparent pull-right" id="sub" @click="submit"><i class="fa fa-unlock-alt" aria-hidden="true"></i> login</span>
+          <span class="btn-transparent pull-right" id="sub" @click="submit" @keyup.enter="submit"><i class="fa fa-unlock-alt" aria-hidden="true"></i> login</span>
     </div>
     <p id="label">EasyRent Auftragsverwaltung</p>
   </div>
@@ -49,6 +49,7 @@ export default {
   methods:{
     submit(){
       auth.login(this, this.username, this.password);
+      bus.$emit('reload');
     },
     cls(){
       this.error = false;
@@ -68,13 +69,6 @@ export default {
 </script>
 
 <style scoped>
-    body{
-      background-color: #524f4f;
-      color: white;
-      font-family: roboto;
-      overflow: hidden;
-      overflow-x:hidden !important;
-    }
     .content{
         padding-left: 17em;
         position: relative;
@@ -143,16 +137,16 @@ export default {
 
        #label{
         font-size: 13pt;
-        padding-top:7em;
+        padding-top:5em;
         padding-left: 30px;
         }
 
       .logmod{
         background-color: #ff6c00;
         text-align: center;
-        width:70%;
+        width:95%;
         height: 37px;
-        margin-left:85px !important;
+        margin-left:12px !important;
         border-radius: 7px;
          }
 
@@ -168,7 +162,7 @@ export default {
        }
 
       .wider{
-        height: 25% !important;
+        height: 28% !important;
        }
 
 
