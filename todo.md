@@ -3,5 +3,5 @@ Todo:
 
 
 ####Nicholas:
-+implement a date picker
++add vuex and solve load bug on login
 
