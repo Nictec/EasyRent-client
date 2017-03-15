@@ -10,9 +10,9 @@
            {{errorMessage}}
        </span>
           <br>
-           <label for="date">{{dateStart}}</label>
+           <label for="date">Verleihdatum:</label>
           <br>
-          <input type="date" name="date" v-model="sdate" placeholder="start datum" class="date">
+          <input type="date" name="date" v-model="sdate" ref="sdate" placeholder="start datum" class="date">
           <span v-if="errors.name" class="error">
            <br>
            {{errorMessage}}
@@ -20,7 +20,7 @@
           <br>
           <label for="dateEnd">Rückgabedatum:</label>
           <br>
-          <input type="date" name="dateEnd" v-model="dateEnd" placeholder="end datum" class="date">
+          <input type="date" name="dateEnd" v-model="edate" placeholder="end datum" class="date" ref="edate">
           <span v-if="errors.name" class="error">
            <br>
            {{errorMessage}}
@@ -176,7 +176,11 @@ import moment from 'moment'
 
             sdate:{
               get:function(){return moment().format('YYYY-MM-DD')},
-              set:function(val){console.log('value: '+val)},
+              set:function(val){this.dateStart=val},
+            },
+            edate:{
+              get:function(){return moment().format('YYYY-MM-DD')},
+              set:function(val){this.dateEnd=val},
             }
         },
         created:function(){
@@ -185,11 +189,21 @@ import moment from 'moment'
             })
         },
         mounted(){
-        //webshim
-        setTimeout(()=>{ $(this.$el).updatePolyfill() })
-        console.log("mounted")
-      },
-    }
+          this.$refs.sdate.focus()
+          //webshim
+          setTimeout(()=>{ $(this.$el).updatePolyfill() })
+          this.$refs.sdate.onchange=(event)=>{
+          this.sdate = this.$refs.sdate.value
+          console.log("change")
+        };
+          this.$refs.edate.focus()
+          setTimeout(()=>{ $(this.$el).updatePolyfill() })
+          this.$refs.edate.onchange=(event)=>{
+          this.edate = this.$refs.edate.value
+          console.log("change end")
+        };
+    },
+}
 </script>
 
 
