@@ -18,6 +18,10 @@
         </div>
 			</div>
 		</div>
+
+      <i  v-show="loading" class="fa fa-circle-o-notch fa-spin spinner"></i>
+      <p class="spinner txt" v-show="loading">lade Daten...</p>
+
       <div id="WarningModal" class="modal" v-if="modal_open">
 
         <div class="modal-content">
@@ -43,6 +47,7 @@
 			return{
 			client:"",
       modal_open:false,
+      loading: true,
       cid:"",
       cindex:"",
 
@@ -66,7 +71,7 @@
 		created(){
 			this.$http.get('client/').then(function(response){
 			 	this.client = response.data;
-			 	console.log("getted");
+        this.loading = false;
 			})
 		}
 	}

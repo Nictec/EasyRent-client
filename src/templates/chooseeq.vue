@@ -42,6 +42,8 @@
     </div>
     <span class="btn-transparent pull-right" id="finish" @click="$router.push('/orders/')"> fertigstellen</span>
 
+    <i  v-show="loading" class="fa fa-circle-o-notch fa-spin spinner"></i>
+    <p class="spinner txt" v-show="loading">lade Daten...</p>
 
     <!-- modal -->
     <div id="WarningModal" class="modal" v-if="modal">
@@ -85,6 +87,7 @@ export default {
       number: 1,
       equipment_id:"",
       filter:"L",
+      loading: true,
     }
   },
   methods: {
@@ -131,6 +134,7 @@ export default {
       .then(
           function(response){
             this.equipment = response.data;
+            this.loading = false;
           });
 
   }

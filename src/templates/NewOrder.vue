@@ -10,17 +10,17 @@
            {{errorMessage}}
        </span>
           <br>
-           <label for="date">Beginn des Auftrages</label>
+           <label for="date">{{dateStart}}</label>
           <br>
-          <input type="date" name="date" v-model="dateStart" placeholder="start datum" class="date">
+          <input type="date" name="date" v-model="sdate" placeholder="start datum" class="date">
           <span v-if="errors.name" class="error">
            <br>
            {{errorMessage}}
        </span>
           <br>
-          <label for="dateEnd">Ende des Auftrages</label>
+          <label for="dateEnd">Rückgabedatum:</label>
           <br>
-          <input type="date" name="dateEnd" v-model=dateEnd placeholder="end datum" class="date">
+          <input type="date" name="dateEnd" v-model="dateEnd" placeholder="end datum" class="date">
           <span v-if="errors.name" class="error">
            <br>
            {{errorMessage}}
@@ -107,7 +107,7 @@
 
 
 <script>
-
+import moment from 'moment'
     export default{
         name: "neworder",
         components:{
@@ -172,6 +172,11 @@
                 if (this.Type == "FS"){
                     return true;
                 }else {return false;}
+            },
+
+            sdate:{
+              get:function(){return moment().format('YYYY-MM-DD')},
+              set:function(val){console.log('value: '+val)},
             }
         },
         created:function(){

@@ -31,6 +31,8 @@
                 </div>
             </div>
     </div>
+    <i  v-show="loading" class="fa fa-circle-o-notch fa-spin spinner"></i>
+    <p class="spinner txt" v-show="loading">lade Daten...</p>
     <div id="WarningModal" class="modal" v-if="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -62,6 +64,7 @@
                 add:"Equipment hinzufügen",
                 modal_text:"",
                 modal: false,
+                loading: true,
                 id:"",
             }
         },
@@ -96,6 +99,7 @@
         created: function(){
             this.$http.get("order/").then(function(response){
                 this.orders = response.data;
+                this.loading = false;
             })
         },
     }

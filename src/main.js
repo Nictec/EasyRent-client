@@ -80,7 +80,7 @@ const router = new VueRouter({
   ]
 });
 
-Vue.http.options.root = 'http://localhost:8000'
+Vue.http.options.root = 'http://technick.pythonanywhere.com'
 Vue.http.interceptors.push((request, next) => {
   request.headers.set('Authorization', auth.getAuthHeader())
   next()

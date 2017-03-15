@@ -151,8 +151,7 @@ export default {
       background-color: #524f4f;
       color: white;
       font-family: roboto;
-      overflow: hidden;
-      overflow-x:hidden !important;
+      overflow: scroll;
     }
 #add{
         float:right;
