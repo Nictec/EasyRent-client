@@ -94,14 +94,26 @@
                             this.modal = false;
                         })
                     })
+                },
+                load(){
+                  this.$http.get("order/").then(function(response){
+                  this.orders = response.data;
+                  this.loading = false;
+            })
                 }
             },
         created: function(){
-            this.$http.get("order/").then(function(response){
-                this.orders = response.data;
-                this.loading = false;
+            var context = this
+            bus.$on('reload', function(){
+              this.$http.get("order/").then(function(response){
+                  context.orders=response.data
+                  context.loading = false;
+            },function(){console.log("fuck")})
             })
+          this.load()
         },
+        mounted: function(){
+        }
     }
 </script>
 

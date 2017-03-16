@@ -76,7 +76,7 @@
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 	#row{
 		height:37px;
 	 }

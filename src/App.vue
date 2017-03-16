@@ -49,7 +49,6 @@ export default {
   methods:{
     submit(){
       auth.login(this, this.username, this.password);
-      bus.$emit('reload');
     },
     cls(){
       this.error = false;

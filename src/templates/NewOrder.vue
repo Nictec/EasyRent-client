@@ -10,7 +10,7 @@
            {{errorMessage}}
        </span>
           <br>
-           <label for="date">Verleihdatum:</label>
+           <label for="date">{{dateStart}}</label>
           <br>
           <input type="date" name="date" v-model="sdate" ref="sdate" placeholder="start datum" class="date">
           <span v-if="errors.name" class="error">
@@ -18,7 +18,7 @@
            {{errorMessage}}
        </span>
           <br>
-          <label for="dateEnd">Rückgabedatum:</label>
+          <label for="dateEnd">{{dateEnd}}</label>
           <br>
           <input type="date" name="dateEnd" v-model="edate" placeholder="end datum" class="date" ref="edate">
           <span v-if="errors.name" class="error">

@@ -1,15 +1,14 @@
 <template>
     <div class="sidenav" id=mySidenay>
-        <router-link to="/"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</router-link>
+        <router-link to="/"><i class="fa fa-cubes" aria-hidden="true"></i> Aufträge</router-link>
         <span @click="open"><i class="fa fa-server" aria-hidden="true"></i> Logistik <i class="fa fa-caret-down" aria-hidden="true"></i>
 </span>
         <div class="dropdown" v-if="dropdown">
             <router-link to="/equipment/"><i class="fa fa-microphone" aria-hidden="true"></i> Equipment</router-link>
             <router-link to="/regale/"><i class="fa fa-server" aria-hidden="true"> Regale</i></router-link>
         </div>
-        <router-link to="/orders"><i class="fa fa-cubes" aria-hidden="true"></i> Aufträge</router-link>
         <router-link to="/clients"><i class="fa fa-users" aria-hidden="true"></i> Kunden</router-link>
-        <span v-if="user.is_staff"><i class="fa fa-cogs" aria-hidden="true"></i> Einstellungen</span>
+        <router-link to="/settings/" v-if="user.is_staff"><i class="fa fa-cogs" aria-hidden="true"></i> Einstellungen</router-link>
         </div>
 
 </template>

@@ -27,7 +27,7 @@ export default{
       localStorage.setItem('id_token', response.data.token)
       this.user.authenticated = true
       console.log("login sucessful:"+response.data.token)
-      return
+      window.bus.$emit("reload");
     },function(response){
       this.user.authenticated = false
       console.log("login failed")

@@ -22,6 +22,8 @@ import chooseeq from './templates/chooseeq.vue'
 import clients from './templates/clients.vue'
 import newClient from './templates/newClient.vue'
 import clientDetails from './templates/clientDetails.vue'
+import settings from './templates/settings.vue'
+import newuser from './templates/newuser.vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -60,7 +62,7 @@ moment.defineLocale("de",{
 const router = new VueRouter({
   mode: 'hash',
   routes: [
-    {path:'/', component: Dashboard},
+    {path:'/', component: Orders},
     {path: '/test', component: Test},
     {path: '/equipment', component: Equipment},
     {path: '/equipment/:equipment_id', component: EquipmentDetails},
@@ -77,6 +79,8 @@ const router = new VueRouter({
     {path: '/clients/', component: clients},
     {path: '/new-client/', component: newClient},
     {path: '/client/:client_id', component: clientDetails},
+    {path: '/settings/', component: settings},
+    {path: '/settings/newuser/', component: newuser},
   ]
 });
 
@@ -86,8 +90,8 @@ Vue.http.interceptors.push((request, next) => {
   next()
 });
 
-
- window.bus = new Vue({
+window.bus = new Vue();
+new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
