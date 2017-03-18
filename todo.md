@@ -3,6 +3,8 @@ Todo:
 
 
 ####Nicholas:
-+add vuex and solve load bug on login
+  bugfixex!!
 #####optional:
   add the dymo label api
+  add a image gallery for equipment
+
