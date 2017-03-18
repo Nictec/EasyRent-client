@@ -1,6 +1,11 @@
 <template>
 
 <div class="equipment">
+<div class="searchbar">
+      <span>suchen:</span>
+      <br>
+      <input type="text" v-model="searchstr">
+    </div>
 <router-link to="/neweq" class="btn-transparent pull-right top-space" id="button" v-bind:title="newInfo">Equipment registrieren</router-link>
 <div class="container-fluid main"  v-show="!loading">
     <div class="table-row header">
@@ -19,7 +24,7 @@
         </div>
     </div>
 
-    <div class="table-row" v-for="equipment in equipment">
+    <div class="table-row" v-for="equipment in equipmentsToDisplay">
        <div class="wrapper text-4">
            <div class="wrapper text-2">
                <div class="text" @click="$router.push('/equipment/'+ equipment.id)" id="link">{{equipment.fabricator}}</div>
@@ -89,6 +94,7 @@ export default {
      dinfo: "Equipment löschen",
      einfo:"Equipment bearbeiten",
      newInfo:"Neues Equipment erstellen",
+     searchstr:"",
     }
    },
    ready: function(){
@@ -136,6 +142,13 @@ export default {
         this.loading = false;
       })
     })
+   },
+   computed:{
+    equipmentsToDisplay(){
+      if(!this.searchstr) return this.equipment
+      var searchstr = this.searchstr.toLowerCase()
+      return this.equipment.filter((elm)=>(elm.name.toLowerCase().indexOf(searchstr) >= 0 || elm.fabricator.toLowerCase().indexOf(searchstr) >= 0) )
+    }
    }
 
   }
@@ -191,5 +204,21 @@ export default {
       cursor: pointer;
       text-decoration: underline;
      }
+
+     .searchbar{
+      margin-top: 3em;
+      margin-bottom: -3em;
+      margin-left: -2.3em;
+    }
+
+    .searchbar input{
+      width: 15em;
+      height: 2em;
+      background-color: #555;
+      border: solid;
+      border-color: white;
+      color: white;
+    }
+
 
 </style>

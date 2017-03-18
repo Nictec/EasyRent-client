@@ -1,6 +1,11 @@
 
 <template>
   <div class="choose">
+    <div class="searchbar">
+      <span>suchen:</span>
+      <br>
+      <input type="text" v-model="searchstr">
+    </div>
     <div class="container-fluid main" v-show="!loading">
 
       <div class="table-row header">
@@ -19,7 +24,7 @@
         </div>
       </div>
 
-      <div class="table-row" v-for="equipment in equipment">
+      <div class="table-row" v-for="equipment in equipmentsToDisplay">
         <div class="wrapper text-4">
           <div class="wrapper text-2">
             <div class="text">{{equipment.fabricator}}</div>
@@ -80,7 +85,7 @@ export default {
   name: 'chooseeq',
   data () {
     return {
-      equipment:"",
+      equipment:null,
       modal: false,
       alert: false,
       da:"",
@@ -88,6 +93,7 @@ export default {
       equipment_id:"",
       filter:"L",
       loading: true,
+      searchstr: "",
     }
   },
   methods: {
@@ -126,6 +132,11 @@ export default {
     },
     available(){
       return this.equipment.avail_quantity;
+    },
+    equipmentsToDisplay(){
+      if(!this.searchstr) return this.equipment
+      var searchstr = this.searchstr.toLowerCase()
+      return this.equipment.filter((elm)=>(elm.name.toLowerCase().indexOf(searchstr) >= 0 || elm.fabricator.toLowerCase().indexOf(searchstr) >= 0) )
     }
   },
 
@@ -203,6 +214,21 @@ body{
 
     #WarningModal{
       height: 45em;
+    }
+
+    .searchbar{
+      margin-top: 3em;
+      margin-bottom: -3em;
+      margin-left: -2.3em;
+    }
+
+    .searchbar input{
+      width: 15em;
+      height: 2em;
+      background-color: #dddddd;
+      border: solid;
+      border-color: white;
+      color: white;
     }
 
 </style>

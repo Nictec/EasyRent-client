@@ -73,7 +73,7 @@
         formData.append('street', this.street);
         this.$http.post('client/', formData, {emulateJSON:true}).then(function(response){
           console.log("submitted")
-          this.$router.push('/kunden/')
+          this.$router.push('/clients/')
         })
       }
     }

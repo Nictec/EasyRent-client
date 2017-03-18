@@ -10,7 +10,7 @@
            {{errorMessage}}
        </span>
           <br>
-           <label for="date">{{dateStart}}</label>
+           <label for="date">Verleihdatum:</label>
           <br>
           <input type="date" name="date" v-model="sdate" ref="sdate" placeholder="start datum" class="date">
           <span v-if="errors.name" class="error">
@@ -18,7 +18,7 @@
            {{errorMessage}}
        </span>
           <br>
-          <label for="dateEnd">{{dateEnd}}</label>
+          <label for="dateEnd">Rückgabedatum:</label>
           <br>
           <input type="date" name="dateEnd" v-model="edate" placeholder="end datum" class="date" ref="edate">
           <span v-if="errors.name" class="error">
@@ -189,16 +189,14 @@ import moment from 'moment'
             })
         },
         mounted(){
-          this.$refs.sdate.focus()
           //webshim
           setTimeout(()=>{ $(this.$el).updatePolyfill() })
           this.$refs.sdate.onchange=(event)=>{
-          this.sdate = this.$refs.sdate.value
-          console.log("change")
+            this.sdate = this.$refs.sdate.value
+            console.log("change", this.sdate)
         };
-          this.$refs.edate.focus()
-          setTimeout(()=>{ $(this.$el).updatePolyfill() })
-          this.$refs.edate.onchange=(event)=>{
+        setTimeout(()=>{ $(this.$el).updatePolyfill() })
+        this.$refs.edate.onchange=(event)=>{
           this.edate = this.$refs.edate.value
           console.log("change end")
         };
