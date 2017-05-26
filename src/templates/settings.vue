@@ -7,7 +7,7 @@
     <div class="wrapper text-4">
       <div class="text">Username</div>
       <div class="text">Email</div>
-      <div class="text">is Admin</div>
+      <div class="text">id</div>
       <div class="text">Optionen</div>
     </div>
     </div>
@@ -15,7 +15,7 @@
       <div class="wrapper text-4">
         <div class="text">{{client.username}}</div>
         <div class="text">{{client.email}}</div>
-        <div class="text">{{client.is_staff}}</div>
+        <div class="text">{{client.id}}</div>
         <div class="text"><span class="btn-red" @click="opm(client.id, client.username, index)"><i class="fa fa-trash" aria-hidden="true"></i></span></div>
       </div>
     </div>
@@ -47,19 +47,21 @@
         client:"",
         modal_open: false,
         modal_text:"",
-        id:"",
+        item:"",
         cindex:""
       }
     },
     methods:{
       opm(id, name, index){
         this.modal_text="wollen Sie den User "+name+" wirklich löschen?"
-        this.id=id
+        this.item=id
+        console.log(id)
         this.cindex=index
         this.modal_open=true
       },
       del(){
-        this.$http.delete('user/'+this.id+'/').then(function(response){
+        var id=this.item;
+        this.$http.delete('user/'+id+'/').then(function(response){
           this.$http.get('user/').then(function(response){
             this.client=response.data;
           })

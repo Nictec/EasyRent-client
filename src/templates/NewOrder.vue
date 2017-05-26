@@ -123,7 +123,7 @@ import moment from 'moment'
                 dateEnd:"",
                 GuestNumber:"",
                 description:"",
-                status:"notOK",
+                status:"IP",
                 street:"",
                 client:"",
                 client_id:"",

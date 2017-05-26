@@ -1,5 +1,19 @@
 <template>
  <div class="orders">
+   <div class="searchbar">
+         <span>suche:</span>
+         <br>
+         <input type="text" v-model="searchstr">
+  </div>
+  <div class="searchbar2">
+    <span>abgeschlossene Aufträge:</span>
+    <br>
+    <select v-model=filterstr>
+      <option value="" default>anzeigen</option>
+      <option value="f">nicht anzeigen</option>
+    </select>
+  </div>
+  <br>
     <router-link class="btn-transparent pull-right top-space" to="/new-order" id="new">Neue Veranstaltung öffnen</router-link>
     <div class="container-fluid main" style="margin-top: 10px">
 
@@ -16,7 +30,7 @@
                 <div class="text">Optionen</div>
             </div>
         </div>
-            <div class="table-row" v-for="orders in orders">
+            <div class="table-row" v-for="orders in ordersToDisplay">
                 <div class="wrapper text-4">
                     <div class="wrapper text-4">
                         <div class="text" @click="$router.push('/details/'+ orders.id)" id="details" v-bind:title="Details">{{orders.name}}</div>
@@ -64,6 +78,8 @@
                 add:"Equipment hinzufügen",
                 modal_text:"",
                 modal: false,
+                filterstr:"",
+                searchstr:"",
                 loading: true,
                 id:"",
             }
@@ -112,6 +128,16 @@
             })
           this.load()
         },
+        computed:{
+         ordersToDisplay(){
+           if(!this.filterstr) var afteropt = this.orders
+           var filterstr = this.filterstr
+           afteropt = this.orders.filter((elm)=>(elm.status.toLowerCase()!=filterstr) )
+           if(!this.searchstr) return afteropt
+           var searchstr = this.searchstr.toLowerCase()
+           return afteropt.filter((elm)=>(elm.name.toLowerCase().indexOf(searchstr) >= 0))
+         }
+       },
         mounted: function(){
         }
     }
@@ -135,5 +161,19 @@
         cursor: pointer;
         text-decoration: underline;
      }
+
+     .searchbar{
+      /*margin-bottom: -7em;*/
+      margin-left: -2.3em;
+    }
+
+    .searchbar2{
+     margin-bottom: -80px;
+     margin-left: 12em;
+   }
+
+   select{
+     width: 15em;
+   }
 
 </style>

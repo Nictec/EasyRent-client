@@ -1,17 +1,21 @@
-<template> 
+<template>
    <span class="status" v-html="symbol"></span>
-</template> 
+</template>
 
 
-<script> 
-    export default { 
-    name: 'status', 
-    props: ['orders'], 
-    computed:{ 
-        symbol: function(){ 
-            if (this.orders.status === "ok"){ 
+<script>
+    export default {
+    name: 'status',
+    props: ['orders'],
+    computed:{
+        symbol: function(){
+            if (this.orders.status === "R"){
                 return '<p>Bereit</p>'
-            }else{return '<p>in Bearbeitung<p>'}
+            }else if(this.orders.status === "IP"){
+              return '<p>in Bearbeitung<p>'
+            }else{
+              return '<p>Abgeschlossen<p>'
+            }
         }
     }
     }

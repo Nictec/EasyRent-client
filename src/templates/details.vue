@@ -16,8 +16,9 @@
 			<h4 class="Heading">Adresse der Veranstaltung:</h4>
 				<span id="adrData"><span class="sub">Ort:</span> {{order.city}}  <span id="street"><span class="sub">Straße und Nummer:</span> {{order.street}}
 				</span></span>
-				<h4 class=Heading>Benötigtes Equipment: </h4>
+				<h4 class=Heading>Optionen: </h4>
 				<span class="btn-transparent" @click="$router.push('/equipment-list/'+orderId+'/')">Equipment anzeigen</span>
+				<span class="btn-transparent" @click="finishHim">Auftrag Abschließen</span>
 			</div>
 
 		</div>
@@ -38,7 +39,13 @@
 			}
 		},
 		methods:{
-
+			finishHim: function(){
+				var FD = new FormData;
+				FD.append('status', 'F')
+				this.$http.patch('order/'+this.orderId+'/', FD, {emulateJSON:true}).then(function(response){
+					this.$router.push('/orders/')
+				})
+			}
 		},
 
 		  computed: {

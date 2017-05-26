@@ -4,9 +4,9 @@
     <h1>{{equipment.fabricator}} {{equipment.name}}</h1>
     <br>
     <h4>Beschreibung:</h4>
-    {{equipment.beschreibung}}
+    <span v-html="equipment.beschreibung"></span>
     <h4>Features:</h4>
-    <vue-markdown :source="equipment.features"></vue-markdown>
+    <span v-html="equipment.features"></span>
     <h4>Gewerk:</h4>
     {{labor}}
     <h4>Vermietpreis:</h4>

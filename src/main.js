@@ -28,6 +28,8 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import auth from './auth.js'
+import VueTinymce from 'vue-tinymce'
+Vue.use(VueTinymce)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
@@ -84,7 +86,7 @@ const router = new VueRouter({
   ]
 });
 
-Vue.http.options.root = 'http://technick.pythonanywhere.com'
+Vue.http.options.root = 'http://localhost:8000'
 Vue.http.interceptors.push((request, next) => {
   request.headers.set('Authorization', auth.getAuthHeader())
   next()

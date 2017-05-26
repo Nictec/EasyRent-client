@@ -43,14 +43,13 @@
      <br>
      <input type="number" name="max_quantity" v-model="max_quantity">
      <br>
-     <label for="features">Features(Markdown)</label>
+     <label for="features">Features</label>
      <br>
-     <textarea name="features" cols="72" rows="10" v-model="features"></textarea>
+     <textarea name="features" cols="90" rows="10" v-model="features"></textarea>
      <br>
      <label for="description" >Beschreibung</label>
      <br>
-     <textarea name="description" cols="72" rows="10" v-model="description">
-     </textarea>
+     <tinymce id="terms" v-model="description" :content='content' :options='options' @change="changed" name="description"></tinymce>
      <br>
      <span v-on:click="save(e)" class="btn-transparent top-space" id="sub">Speichern</span>
      <span v-on:click="saveandgo()" class="btn-transparent">Speichern und schließen</span>
@@ -171,13 +170,13 @@
 
     }
 
-    .form textarea{
+    /*.form textarea{
         background-color: @input-color;
         margin-bottom: 1em;
         margin-right: 0em;
         height:100px;
         font-family: roboto;
-    }
+    }*/
 
     .form input{
         background-color: @input-color;
