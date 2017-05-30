@@ -3,6 +3,7 @@ import _ from 'underscore'
 import moment from 'moment'
 window.$ = window.jQuery = require("jquery")
 import "./polyfiller.js"
+import 'fullcalendar'
 import VueMarkdown from 'vue-markdown'
 import Hello from './templates/Hello.vue'
 import Test from './templates/Test.vue'
@@ -33,6 +34,17 @@ Vue.use(VueTinymce)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
+//fullcalendar config
+    $(document).ready(function() {
+
+        // page is now ready, initialize the calendar...
+
+        $('#calendar').fullCalendar({
+            events: 'http://127.0.0.1:8000/calfeed/',
+            handleWindowResize: true,
+        })
+
+    });
 //moment config
 
 moment.defineLocale("de",{
@@ -64,7 +76,8 @@ moment.defineLocale("de",{
 const router = new VueRouter({
   mode: 'hash',
   routes: [
-    {path:'/', component: Orders},
+    {path:'/', component: Dashboard},
+    {path:'/orders', component: Orders},
     {path: '/test', component: Test},
     {path: '/equipment', component: Equipment},
     {path: '/equipment/:equipment_id', component: EquipmentDetails},
