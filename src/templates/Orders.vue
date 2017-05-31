@@ -15,7 +15,7 @@
   </div>
   <br>
     <router-link class="btn-transparent pull-right top-space" to="/new-order" id="new">Neue Veranstaltung öffnen</router-link>
-    <div class="container-fluid main" style="margin-top: 10px">
+    <div class="container-fluid main" style="margin-top: 30px">
 
         <div class="table-row header">
             <div class="wrapper text-4">
@@ -163,13 +163,17 @@
      }
 
      .searchbar{
-      /*margin-bottom: -7em;*/
+      margin-bottom: -55px;
       margin-left: -2.3em;
     }
 
     .searchbar2{
-     margin-bottom: -80px;
+     margin-bottom: -72px;
      margin-left: 12em;
+   }
+
+   .searchbar2 select{
+    height:30px;
    }
 
    select{

@@ -1,6 +1,5 @@
 <template>
     <div class="sidenav" id=mySidenay>
-        <router-link to="/">Dashboard</router-link>
         <router-link to="/orders/"><i class="fa fa-cubes" aria-hidden="true"></i> Aufträge</router-link>
         <span @click="open"><i class="fa fa-server" aria-hidden="true"></i> Logistik <i class="fa fa-caret-down" aria-hidden="true"></i>
 </span>

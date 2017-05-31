@@ -3,7 +3,7 @@ import _ from 'underscore'
 import moment from 'moment'
 window.$ = window.jQuery = require("jquery")
 import "./polyfiller.js"
-import 'fullcalendar'
+import fullCalendar from 'fullcalendar'
 import VueMarkdown from 'vue-markdown'
 import Hello from './templates/Hello.vue'
 import Test from './templates/Test.vue'
@@ -34,17 +34,42 @@ Vue.use(VueTinymce)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
-//fullcalendar config
-    $(document).ready(function() {
+// FullCalendar Latest
+// Script modified from the "theme.html" demo file
 
-        // page is now ready, initialize the calendar...
+$(document).ready(function () {
 
-        $('#calendar').fullCalendar({
-            events: 'http://127.0.0.1:8000/calfeed/',
-            handleWindowResize: true,
-        })
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        // defaultDate: today(),
 
+        eventAfterRender: function () {
+            // add titles to "+# more links"
+            $('.fc-more-cell a').each(function () {
+                this.title = this.textContent;
+            });
+        },
+
+        // add event name to title attribute on mouseover
+        eventMouseover: function (event, jsEvent, view) {
+            if (view.name !== 'agendaDay') {
+                $(jsEvent.target).attr('title', event.title);
+            }
+        },
+
+        eventClick: function(calEvent, jsEvent, view) {
+         $router.push(calEvent.url)
+        },
+
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: 'http://localhost:8000/calfeed/'
     });
+
+});
 //moment config
 
 moment.defineLocale("de",{
@@ -76,8 +101,7 @@ moment.defineLocale("de",{
 const router = new VueRouter({
   mode: 'hash',
   routes: [
-    {path:'/', component: Dashboard},
-    {path:'/orders', component: Orders},
+    {path:'/', component: Orders},
     {path: '/test', component: Test},
     {path: '/equipment', component: Equipment},
     {path: '/equipment/:equipment_id', component: EquipmentDetails},
